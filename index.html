@@ -4,12 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Galleria Pizza and More | Pizza Italienne Authentique au Maroc</title>
-    <meta name="description" content="Galleria — Pizza italienne authentique et tacos savoureux. Livraison à domicile et sur place. Commandez via WhatsApp: +212764948386">
-    <meta name="keywords" content="Galleria, Pizza, Tacos, Restaurant, Maroc, Livraison, Italien, Fait avec passion">
+    <meta name="description" content="Galleria — Pizza italienne authentique, Burgers, Tacos, Pastichio et plus. Livraison à domicile et sur place. Commandez via WhatsApp: +212764948386">
+    <meta name="keywords" content="Galleria, Pizza, Tacos, Burger, Pasta, Pastichio, Restaurant, Maroc, Livraison, Italien, Fait avec passion">
     
     <!-- Open Graph Tags -->
     <meta property="og:title" content="Galleria Pizza and More | Luxury Italian Dining">
-    <meta property="og:description" content="Pizza italienne authentique et tacos savoureux. Fait avec passion • مصنوع بحب. Commandez maintenant!">
+    <meta property="og:description" content="Découvrez notre menu varié: Pizzas, Burgers, Tacos, Pasta et délicieux desserts. Fait avec passion • مصنوع بحب">
     <meta property="og:image" content="https://images.unsplash.com/photo-1513104890138-7c749659a591?ixlib=rb-4.0.3&auto=format&fit=crop&w=1080&q=80">
     <meta property="og:url" content="https://www.Galleria-pizza.com">
     <meta property="og:type" content="website">
@@ -145,8 +145,8 @@
         }
         .luxury-card:hover {
             border-color: #E8C98A;
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
         }
 
         .gallery-item {
@@ -206,10 +206,18 @@
         }
 
         /* Tabs */
+        .tab-btn {
+            white-space: nowrap;
+        }
         .tab-btn.active {
             color: #E8C98A;
             border-bottom: 2px solid #E8C98A;
         }
+        
+        /* Custom Scrollbar for Tabs */
+        .tabs-container::-webkit-scrollbar { height: 4px; }
+        .tabs-container::-webkit-scrollbar-track { background: transparent; }
+        .tabs-container::-webkit-scrollbar-thumb { background: #8B0000; border-radius: 4px; }
 
         /* Navbar scroll effect */
         .nav-scrolled {
@@ -220,7 +228,7 @@
             padding-bottom: 0.5rem;
         }
 
-        /* Custom Scrollbar */
+        /* Main Scrollbar */
         ::-webkit-scrollbar { width: 8px; }
         ::-webkit-scrollbar-track { background: #120606; }
         ::-webkit-scrollbar-thumb { background: #8B0000; border-radius: 4px; }
@@ -407,173 +415,1081 @@
 
     <!-- Page 3: Menu Section -->
     <section id="menu" class="py-24 bg-[#0a0303] relative border-y border-gold/10">
-        <div class="max-w-7xl mx-auto px-6 md:px-12">
-            <div class="text-center mb-12 fade-in-up">
+        <div class="max-w-7xl mx-auto px-4 md:px-12">
+            <div class="text-center mb-10 fade-in-up">
                 <h2 class="font-serif text-4xl md:text-5xl text-gold mb-6">
                     <span class="lang-fr">Notre Menu</span>
                     <span class="lang-ar">قائمة الطعام</span>
                 </h2>
-                <div class="w-24 h-1 bg-primary mx-auto"></div>
+                <div class="w-24 h-1 bg-primary mx-auto mb-4"></div>
             </div>
 
-            <!-- Tabs -->
-            <div class="flex flex-wrap justify-center gap-4 md:gap-8 mb-12 fade-in-up">
-                <button class="tab-btn active pb-2 text-lg md:text-xl font-serif tracking-wider transition-colors" data-target="pizzas">🍕 Pizzas</button>
-                <button class="tab-btn pb-2 text-lg md:text-xl font-serif tracking-wider text-light/60 hover:text-gold transition-colors" data-target="tacos">🌮 Tacos</button>
-                <button class="tab-btn pb-2 text-lg md:text-xl font-serif tracking-wider text-light/60 hover:text-gold transition-colors" data-target="plats">🥗 Plats</button>
-                <button class="tab-btn pb-2 text-lg md:text-xl font-serif tracking-wider text-light/60 hover:text-gold transition-colors" data-target="boissons">🥤 Desserts</button>
+            <!-- Menu Scrollable Tabs -->
+            <div class="tabs-container overflow-x-auto flex flex-nowrap lg:flex-wrap justify-start lg:justify-center gap-4 md:gap-6 mb-12 fade-in-up pb-4 px-2" style="scroll-behavior: smooth;">
+                <button class="tab-btn active pb-2 text-base md:text-lg font-serif tracking-wider transition-colors" data-target="tab-burgers">🍔 Burgers & Sandwiches</button>
+                <button class="tab-btn pb-2 text-base md:text-lg font-serif tracking-wider text-light/60 hover:text-gold transition-colors" data-target="tab-panini">🌯 Panini & Shawarma</button>
+                <button class="tab-btn pb-2 text-base md:text-lg font-serif tracking-wider text-light/60 hover:text-gold transition-colors" data-target="tab-pasta">🍝 Pasta & Pastichio</button>
+                <button class="tab-btn pb-2 text-base md:text-lg font-serif tracking-wider text-light/60 hover:text-gold transition-colors" data-target="tab-tacos">🌮 Tacos & Crispy</button>
+                <button class="tab-btn pb-2 text-base md:text-lg font-serif tracking-wider text-light/60 hover:text-gold transition-colors" data-target="tab-plats">🥘 Lasagne & Plats</button>
+                <button class="tab-btn pb-2 text-base md:text-lg font-serif tracking-wider text-light/60 hover:text-gold transition-colors" data-target="tab-salades">🥗 Salades</button>
+                <button class="tab-btn pb-2 text-base md:text-lg font-serif tracking-wider text-light/60 hover:text-gold transition-colors" data-target="tab-boissons">🍹 Jus & Boissons</button>
+                <button class="tab-btn pb-2 text-base md:text-lg font-serif tracking-wider text-light/60 hover:text-gold transition-colors" data-target="tab-desserts">🍮 Desserts</button>
             </div>
 
-            <!-- Menu Content -->
-            <div id="menu-container" class="fade-in-up">
-                <!-- Pizzas Tab -->
-                <div id="pizzas" class="tab-content grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <!-- Item 1 -->
-                    <div class="luxury-card rounded-sm overflow-hidden flex flex-col h-full group">
-                        <div class="h-48 overflow-hidden relative">
-                            <img src="https://images.unsplash.com/photo-1574071318508-1cdbab80d002?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Margherita" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
-                            <div class="absolute top-0 right-0 bg-primary text-light px-3 py-1 m-2 text-sm font-bold">Populaire</div>
-                        </div>
-                        <div class="p-6 flex flex-col flex-grow">
-                            <div class="flex justify-between items-start mb-2">
-                                <h3 class="font-serif text-xl text-gold font-bold">Margherita</h3>
-                                <span class="text-primary font-bold text-lg">45 DH</span>
+            <!-- Menu Content Area -->
+            <div id="menu-container" class="fade-in-up bg-[#120606] border border-gold/20 p-4 md:p-10 rounded-lg shadow-2xl">
+                
+                <!-- TAB 1: Burgers & Sandwiches -->
+                <div id="tab-burgers" class="tab-content block">
+                    <!-- Category: Burgers -->
+                    <div class="mb-16">
+                        <h3 class="text-3xl font-serif text-gold mb-8 border-b border-gold/20 pb-3">Burgers</h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+                            
+                            <div class="luxury-card rounded-sm overflow-hidden flex flex-col h-full group">
+                                <div class="h-56 overflow-hidden relative">
+                                    <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=600&q=80" alt="Chicken Burger" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
+                                </div>
+                                <div class="p-6 flex flex-col flex-grow">
+                                    <h4 class="font-serif text-xl text-gold font-bold text-center mb-5"><span class="lang-fr">Chicken Burger</span><span class="lang-ar">برجر دجاج</span></h4>
+                                    <a href="https://wa.me/212764948386?text=Bonjour,%20je%20voudrais%20commander%20un%20Chicken%20Burger" target="_blank" class="btn-gold w-full py-3 text-center text-sm font-bold tracking-wider mt-auto rounded-sm flex justify-center items-center gap-2">
+                                        <i class="fab fa-whatsapp text-lg"></i> <span class="lang-fr">Commander</span><span class="lang-ar">اطلب</span>
+                                    </a>
+                                </div>
                             </div>
-                            <p class="text-sm text-light/70 mb-4 flex-grow">
-                                <span class="lang-fr">Sauce tomate maison, mozzarella fior di latte, basilic frais.</span>
-                                <span class="lang-ar">صلصة طماطم، جبن الموزاريلا، ريحان طازج.</span>
-                            </p>
-                            <a href="https://wa.me/212764948386?text=Bonjour,%20je%20voudrais%20commander%20une%20Pizza%20Margherita" target="_blank" class="btn-gold w-full py-2 text-center text-sm font-bold tracking-wider mt-auto rounded-sm flex justify-center items-center gap-2">
-                                <i class="fab fa-whatsapp"></i> <span class="lang-fr">Commander</span><span class="lang-ar">اطلب</span>
-                            </a>
+                            
+                            <div class="luxury-card rounded-sm overflow-hidden flex flex-col h-full group">
+                                <div class="h-56 overflow-hidden relative">
+                                    <img src="https://images.unsplash.com/photo-1550547660-d9450f859349?auto=format&fit=crop&w=600&q=80" alt="Cheeseburger" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
+                                </div>
+                                <div class="p-6 flex flex-col flex-grow">
+                                    <h4 class="font-serif text-xl text-gold font-bold text-center mb-5"><span class="lang-fr">Cheeseburger</span><span class="lang-ar">تشيز برجر</span></h4>
+                                    <a href="https://wa.me/212764948386?text=Bonjour,%20je%20voudrais%20commander%20un%20Cheeseburger" target="_blank" class="btn-gold w-full py-3 text-center text-sm font-bold tracking-wider mt-auto rounded-sm flex justify-center items-center gap-2">
+                                        <i class="fab fa-whatsapp text-lg"></i> <span class="lang-fr">Commander</span><span class="lang-ar">اطلب</span>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div class="luxury-card rounded-sm overflow-hidden flex flex-col h-full group">
+                                <div class="h-56 overflow-hidden relative">
+                                    <img src="https://images.unsplash.com/photo-1586816001966-79b736744398?auto=format&fit=crop&w=600&q=80" alt="Double Cheeseburger" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
+                                </div>
+                                <div class="p-6 flex flex-col flex-grow">
+                                    <h4 class="font-serif text-xl text-gold font-bold text-center mb-5"><span class="lang-fr">Double Cheeseburger</span><span class="lang-ar">دبل تشيز برجر</span></h4>
+                                    <a href="https://wa.me/212764948386?text=Bonjour,%20je%20voudrais%20commander%20un%20Double%20Cheeseburger" target="_blank" class="btn-gold w-full py-3 text-center text-sm font-bold tracking-wider mt-auto rounded-sm flex justify-center items-center gap-2">
+                                        <i class="fab fa-whatsapp text-lg"></i> <span class="lang-fr">Commander</span><span class="lang-ar">اطلب</span>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div class="luxury-card rounded-sm overflow-hidden flex flex-col h-full group">
+                                <div class="h-56 overflow-hidden relative">
+                                    <img src="https://images.unsplash.com/photo-1620589125156-fd5028c5e05b?auto=format&fit=crop&w=600&q=80" alt="Burger Crunchy" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
+                                </div>
+                                <div class="p-6 flex flex-col flex-grow">
+                                    <h4 class="font-serif text-xl text-gold font-bold text-center mb-5"><span class="lang-fr">Burger Crunchy</span><span class="lang-ar">برجر كرانشي</span></h4>
+                                    <a href="https://wa.me/212764948386?text=Bonjour,%20je%20voudrais%20commander%20un%20Burger%20Crunchy" target="_blank" class="btn-gold w-full py-3 text-center text-sm font-bold tracking-wider mt-auto rounded-sm flex justify-center items-center gap-2">
+                                        <i class="fab fa-whatsapp text-lg"></i> <span class="lang-fr">Commander</span><span class="lang-ar">اطلب</span>
+                                    </a>
+                                </div>
+                            </div>
+
                         </div>
                     </div>
-                    <!-- Item 2 -->
-                    <div class="luxury-card rounded-sm overflow-hidden flex flex-col h-full group">
-                        <div class="h-48 overflow-hidden">
-                            <img src="https://images.unsplash.com/photo-1513104890138-7c749659a591?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Quatre Fromages" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
-                        </div>
-                        <div class="p-6 flex flex-col flex-grow">
-                            <div class="flex justify-between items-start mb-2">
-                                <h3 class="font-serif text-xl text-gold font-bold">4 Fromages</h3>
-                                <span class="text-primary font-bold text-lg">65 DH</span>
+
+                    <!-- Category: Sandwiches -->
+                    <div class="mb-8">
+                        <h3 class="text-3xl font-serif text-gold mb-8 border-b border-gold/20 pb-3">Sandwiches</h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+                            
+                            <div class="luxury-card rounded-sm overflow-hidden flex flex-col h-full group">
+                                <div class="h-56 overflow-hidden relative">
+                                    <img src="https://images.unsplash.com/photo-1528735602780-2552fd46c7af?auto=format&fit=crop&w=600&q=80" alt="Sandwich Thon" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
+                                </div>
+                                <div class="p-6 flex flex-col flex-grow">
+                                    <h4 class="font-serif text-xl text-gold font-bold text-center mb-5"><span class="lang-fr">Thon</span><span class="lang-ar">ساندويتش تونة</span></h4>
+                                    <a href="https://wa.me/212764948386?text=Bonjour,%20je%20voudrais%20commander%20un%20Sandwich%20Thon" target="_blank" class="btn-gold w-full py-3 text-center text-sm font-bold tracking-wider mt-auto rounded-sm flex justify-center items-center gap-2">
+                                        <i class="fab fa-whatsapp text-lg"></i> <span class="lang-fr">Commander</span><span class="lang-ar">اطلب</span>
+                                    </a>
+                                </div>
                             </div>
-                            <p class="text-sm text-light/70 mb-4 flex-grow">
-                                <span class="lang-fr">Mozzarella, gorgonzola, chèvre, parmesan, crème fraîche.</span>
-                                <span class="lang-ar">موزاريلا، جورجونزولا، ماعز، بارميزان، كريمة.</span>
-                            </p>
-                            <a href="https://wa.me/212764948386?text=Bonjour,%20je%20voudrais%20commander%20une%20Pizza%204%20Fromages" target="_blank" class="btn-gold w-full py-2 text-center text-sm font-bold tracking-wider mt-auto rounded-sm flex justify-center items-center gap-2">
-                                <i class="fab fa-whatsapp"></i> <span class="lang-fr">Commander</span><span class="lang-ar">اطلب</span>
-                            </a>
-                        </div>
-                    </div>
-                    <!-- Item 3 -->
-                    <div class="luxury-card rounded-sm overflow-hidden flex flex-col h-full group">
-                        <div class="h-48 overflow-hidden">
-                            <img src="https://images.unsplash.com/photo-1593504049359-74330189a345?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Galleria Spéciale" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
-                        </div>
-                        <div class="p-6 flex flex-col flex-grow">
-                            <div class="flex justify-between items-start mb-2">
-                                <h3 class="font-serif text-xl text-gold font-bold">Galleria Spéciale</h3>
-                                <span class="text-primary font-bold text-lg">75 DH</span>
+
+                            <div class="luxury-card rounded-sm overflow-hidden flex flex-col h-full group">
+                                <div class="h-56 overflow-hidden relative">
+                                    <img src="https://images.unsplash.com/photo-1619881589839-a9a3b68019b1?auto=format&fit=crop&w=600&q=80" alt="Sandwich Poulet" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
+                                </div>
+                                <div class="p-6 flex flex-col flex-grow">
+                                    <h4 class="font-serif text-xl text-gold font-bold text-center mb-5"><span class="lang-fr">Poulet</span><span class="lang-ar">ساندويتش دجاج</span></h4>
+                                    <a href="https://wa.me/212764948386?text=Bonjour,%20je%20voudrais%20commander%20un%20Sandwich%20Poulet" target="_blank" class="btn-gold w-full py-3 text-center text-sm font-bold tracking-wider mt-auto rounded-sm flex justify-center items-center gap-2">
+                                        <i class="fab fa-whatsapp text-lg"></i> <span class="lang-fr">Commander</span><span class="lang-ar">اطلب</span>
+                                    </a>
+                                </div>
                             </div>
-                            <p class="text-sm text-light/70 mb-4 flex-grow">
-                                <span class="lang-fr">Viande hachée, poulet, champignons, poivrons, olives, œuf.</span>
-                                <span class="lang-ar">لحم مفروم، دجاج، فطر، فلفل، زيتون، بيض.</span>
-                            </p>
-                            <a href="https://wa.me/212764948386?text=Bonjour,%20je%20voudrais%20commander%20une%20Pizza%20Galleria%20Spéciale" target="_blank" class="btn-gold w-full py-2 text-center text-sm font-bold tracking-wider mt-auto rounded-sm flex justify-center items-center gap-2">
-                                <i class="fab fa-whatsapp"></i> <span class="lang-fr">Commander</span><span class="lang-ar">اطلب</span>
-                            </a>
+
+                            <div class="luxury-card rounded-sm overflow-hidden flex flex-col h-full group">
+                                <div class="h-56 overflow-hidden relative">
+                                    <img src="https://images.unsplash.com/photo-1553909489-cd47cebeafa8?auto=format&fit=crop&w=600&q=80" alt="Sandwich Viande hachée" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
+                                </div>
+                                <div class="p-6 flex flex-col flex-grow">
+                                    <h4 class="font-serif text-xl text-gold font-bold text-center mb-5"><span class="lang-fr">Viande hachée</span><span class="lang-ar">ساندويتش لحم مفروم</span></h4>
+                                    <a href="https://wa.me/212764948386?text=Bonjour,%20je%20voudrais%20commander%20un%20Sandwich%20Viande%20hachée" target="_blank" class="btn-gold w-full py-3 text-center text-sm font-bold tracking-wider mt-auto rounded-sm flex justify-center items-center gap-2">
+                                        <i class="fab fa-whatsapp text-lg"></i> <span class="lang-fr">Commander</span><span class="lang-ar">اطلب</span>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div class="luxury-card rounded-sm overflow-hidden flex flex-col h-full group">
+                                <div class="h-56 overflow-hidden relative">
+                                    <img src="https://images.unsplash.com/photo-1481070555726-e2fe8357725c?auto=format&fit=crop&w=600&q=80" alt="Sandwich Mixte" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
+                                </div>
+                                <div class="p-6 flex flex-col flex-grow">
+                                    <h4 class="font-serif text-xl text-gold font-bold text-center mb-5"><span class="lang-fr">Mixte</span><span class="lang-ar">ساندويتش ميكس</span></h4>
+                                    <a href="https://wa.me/212764948386?text=Bonjour,%20je%20voudrais%20commander%20un%20Sandwich%20Mixte" target="_blank" class="btn-gold w-full py-3 text-center text-sm font-bold tracking-wider mt-auto rounded-sm flex justify-center items-center gap-2">
+                                        <i class="fab fa-whatsapp text-lg"></i> <span class="lang-fr">Commander</span><span class="lang-ar">اطلب</span>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div class="luxury-card rounded-sm overflow-hidden flex flex-col h-full group">
+                                <div class="h-56 overflow-hidden relative">
+                                    <img src="https://images.unsplash.com/photo-1606755456206-b25206cde27e?auto=format&fit=crop&w=600&q=80" alt="Sandwich Saucisse" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
+                                </div>
+                                <div class="p-6 flex flex-col flex-grow">
+                                    <h4 class="font-serif text-xl text-gold font-bold text-center mb-5"><span class="lang-fr">Saucisse</span><span class="lang-ar">ساندويتش نقانق</span></h4>
+                                    <a href="https://wa.me/212764948386?text=Bonjour,%20je%20voudrais%20commander%20un%20Sandwich%20Saucisse" target="_blank" class="btn-gold w-full py-3 text-center text-sm font-bold tracking-wider mt-auto rounded-sm flex justify-center items-center gap-2">
+                                        <i class="fab fa-whatsapp text-lg"></i> <span class="lang-fr">Commander</span><span class="lang-ar">اطلب</span>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div class="luxury-card rounded-sm overflow-hidden flex flex-col h-full group">
+                                <div class="h-56 overflow-hidden relative">
+                                    <img src="https://images.unsplash.com/photo-1553909489-cd47cebeafa8?auto=format&fit=crop&w=600&q=80" alt="Sandwich Galleria" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
+                                </div>
+                                <div class="p-6 flex flex-col flex-grow">
+                                    <h4 class="font-serif text-xl text-gold font-bold text-center mb-5"><span class="lang-fr">Galleria Spécial</span><span class="lang-ar">ساندويتش غاليريا</span></h4>
+                                    <a href="https://wa.me/212764948386?text=Bonjour,%20je%20voudrais%20commander%20un%20Sandwich%20Galleria" target="_blank" class="btn-gold w-full py-3 text-center text-sm font-bold tracking-wider mt-auto rounded-sm flex justify-center items-center gap-2">
+                                        <i class="fab fa-whatsapp text-lg"></i> <span class="lang-fr">Commander</span><span class="lang-ar">اطلب</span>
+                                    </a>
+                                </div>
+                            </div>
+
                         </div>
                     </div>
                 </div>
 
-                <!-- Tacos Tab (Hidden by default) -->
-                <div id="tacos" class="tab-content hidden grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <div class="luxury-card rounded-sm overflow-hidden flex flex-col h-full group">
-                        <div class="h-48 overflow-hidden bg-dark flex items-center justify-center">
-                            <i class="fas fa-utensils text-5xl text-gold/30"></i>
-                        </div>
-                        <div class="p-6 flex flex-col flex-grow">
-                            <div class="flex justify-between items-start mb-2">
-                                <h3 class="font-serif text-xl text-gold font-bold">Tacos Poulet</h3>
-                                <span class="text-primary font-bold text-lg">40 DH</span>
+                <!-- TAB 2: Panini & Shawarma -->
+                <div id="tab-panini" class="tab-content hidden">
+                    <!-- Category: Panini -->
+                    <div class="mb-16">
+                        <h3 class="text-3xl font-serif text-gold mb-8 border-b border-gold/20 pb-3">Panini</h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+                            
+                            <div class="luxury-card rounded-sm overflow-hidden flex flex-col h-full group">
+                                <div class="h-56 overflow-hidden relative">
+                                    <img src="https://images.unsplash.com/photo-1628840042765-356cda07504e?auto=format&fit=crop&w=600&q=80" alt="Panini Poulet" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
+                                </div>
+                                <div class="p-6 flex flex-col flex-grow">
+                                    <h4 class="font-serif text-xl text-gold font-bold text-center mb-5"><span class="lang-fr">Poulet</span><span class="lang-ar">بانيني دجاج</span></h4>
+                                    <a href="https://wa.me/212764948386?text=Bonjour,%20je%20voudrais%20commander%20un%20Panini%20Poulet" target="_blank" class="btn-gold w-full py-3 text-center text-sm font-bold tracking-wider mt-auto rounded-sm flex justify-center items-center gap-2">
+                                        <i class="fab fa-whatsapp text-lg"></i> <span class="lang-fr">Commander</span><span class="lang-ar">اطلب</span>
+                                    </a>
+                                </div>
                             </div>
-                            <p class="text-sm text-light/70 mb-4 flex-grow">
-                                <span class="lang-fr">Poulet mariné, frites, sauce fromagère maison.</span>
-                                <span class="lang-ar">دجاج متبل، بطاطس مقلية، صلصة الجبن.</span>
-                            </p>
-                            <a href="https://wa.me/212764948386" target="_blank" class="btn-gold w-full py-2 text-center text-sm font-bold tracking-wider mt-auto rounded-sm flex justify-center items-center gap-2">
-                                <i class="fab fa-whatsapp"></i> <span class="lang-fr">Commander</span><span class="lang-ar">اطلب</span>
-                            </a>
+
+                            <div class="luxury-card rounded-sm overflow-hidden flex flex-col h-full group">
+                                <div class="h-56 overflow-hidden relative">
+                                    <img src="https://images.unsplash.com/photo-1628840042765-356cda07504e?auto=format&fit=crop&w=600&q=80" alt="Panini Viande" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
+                                </div>
+                                <div class="p-6 flex flex-col flex-grow">
+                                    <h4 class="font-serif text-xl text-gold font-bold text-center mb-5"><span class="lang-fr">Viande Hachée</span><span class="lang-ar">بانيني لحم مفروم</span></h4>
+                                    <a href="https://wa.me/212764948386?text=Bonjour,%20je%20voudrais%20commander%20un%20Panini%20Viande%20Hachée" target="_blank" class="btn-gold w-full py-3 text-center text-sm font-bold tracking-wider mt-auto rounded-sm flex justify-center items-center gap-2">
+                                        <i class="fab fa-whatsapp text-lg"></i> <span class="lang-fr">Commander</span><span class="lang-ar">اطلب</span>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div class="luxury-card rounded-sm overflow-hidden flex flex-col h-full group">
+                                <div class="h-56 overflow-hidden relative">
+                                    <img src="https://images.unsplash.com/photo-1628840042765-356cda07504e?auto=format&fit=crop&w=600&q=80" alt="Panini Saucisse" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
+                                </div>
+                                <div class="p-6 flex flex-col flex-grow">
+                                    <h4 class="font-serif text-xl text-gold font-bold text-center mb-5"><span class="lang-fr">Saucisse</span><span class="lang-ar">بانيني نقانق</span></h4>
+                                    <a href="https://wa.me/212764948386?text=Bonjour,%20je%20voudrais%20commander%20un%20Panini%20Saucisse" target="_blank" class="btn-gold w-full py-3 text-center text-sm font-bold tracking-wider mt-auto rounded-sm flex justify-center items-center gap-2">
+                                        <i class="fab fa-whatsapp text-lg"></i> <span class="lang-fr">Commander</span><span class="lang-ar">اطلب</span>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div class="luxury-card rounded-sm overflow-hidden flex flex-col h-full group">
+                                <div class="h-56 overflow-hidden relative">
+                                    <img src="https://images.unsplash.com/photo-1628840042765-356cda07504e?auto=format&fit=crop&w=600&q=80" alt="Panini Mixte" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
+                                </div>
+                                <div class="p-6 flex flex-col flex-grow">
+                                    <h4 class="font-serif text-xl text-gold font-bold text-center mb-5"><span class="lang-fr">Mixte</span><span class="lang-ar">بانيني ميكس</span></h4>
+                                    <a href="https://wa.me/212764948386?text=Bonjour,%20je%20voudrais%20commander%20un%20Panini%20Mixte" target="_blank" class="btn-gold w-full py-3 text-center text-sm font-bold tracking-wider mt-auto rounded-sm flex justify-center items-center gap-2">
+                                        <i class="fab fa-whatsapp text-lg"></i> <span class="lang-fr">Commander</span><span class="lang-ar">اطلب</span>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div class="luxury-card rounded-sm overflow-hidden flex flex-col h-full group">
+                                <div class="h-56 overflow-hidden relative">
+                                    <img src="https://images.unsplash.com/photo-1628840042765-356cda07504e?auto=format&fit=crop&w=600&q=80" alt="Panini Thon" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
+                                </div>
+                                <div class="p-6 flex flex-col flex-grow">
+                                    <h4 class="font-serif text-xl text-gold font-bold text-center mb-5"><span class="lang-fr">Thon</span><span class="lang-ar">بانيني تونة</span></h4>
+                                    <a href="https://wa.me/212764948386?text=Bonjour,%20je%20voudrais%20commander%20un%20Panini%20Thon" target="_blank" class="btn-gold w-full py-3 text-center text-sm font-bold tracking-wider mt-auto rounded-sm flex justify-center items-center gap-2">
+                                        <i class="fab fa-whatsapp text-lg"></i> <span class="lang-fr">Commander</span><span class="lang-ar">اطلب</span>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div class="luxury-card rounded-sm overflow-hidden flex flex-col h-full group">
+                                <div class="h-56 overflow-hidden relative">
+                                    <img src="https://images.unsplash.com/photo-1593504049359-74330189a345?auto=format&fit=crop&w=600&q=80" alt="Hot dog" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
+                                </div>
+                                <div class="p-6 flex flex-col flex-grow">
+                                    <h4 class="font-serif text-xl text-gold font-bold text-center mb-5"><span class="lang-fr">Hot dog</span><span class="lang-ar">هوت دوج</span></h4>
+                                    <a href="https://wa.me/212764948386?text=Bonjour,%20je%20voudrais%20commander%20un%20Hot%20dog" target="_blank" class="btn-gold w-full py-3 text-center text-sm font-bold tracking-wider mt-auto rounded-sm flex justify-center items-center gap-2">
+                                        <i class="fab fa-whatsapp text-lg"></i> <span class="lang-fr">Commander</span><span class="lang-ar">اطلب</span>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div class="luxury-card rounded-sm overflow-hidden flex flex-col h-full group">
+                                <div class="h-56 overflow-hidden relative">
+                                    <img src="https://images.unsplash.com/photo-1628840042765-356cda07504e?auto=format&fit=crop&w=600&q=80" alt="Panini Simple" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
+                                </div>
+                                <div class="p-6 flex flex-col flex-grow">
+                                    <h4 class="font-serif text-xl text-gold font-bold text-center mb-5"><span class="lang-fr">Simple</span><span class="lang-ar">بانيني عادي</span></h4>
+                                    <a href="https://wa.me/212764948386?text=Bonjour,%20je%20voudrais%20commander%20un%20Panini%20Simple" target="_blank" class="btn-gold w-full py-3 text-center text-sm font-bold tracking-wider mt-auto rounded-sm flex justify-center items-center gap-2">
+                                        <i class="fab fa-whatsapp text-lg"></i> <span class="lang-fr">Commander</span><span class="lang-ar">اطلب</span>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div class="luxury-card rounded-sm overflow-hidden flex flex-col h-full group">
+                                <div class="h-56 overflow-hidden relative">
+                                    <img src="https://images.unsplash.com/photo-1628840042765-356cda07504e?auto=format&fit=crop&w=600&q=80" alt="Panini Fromage" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
+                                </div>
+                                <div class="p-6 flex flex-col flex-grow">
+                                    <h4 class="font-serif text-xl text-gold font-bold text-center mb-5"><span class="lang-fr">Fromage</span><span class="lang-ar">بانيني جبن</span></h4>
+                                    <a href="https://wa.me/212764948386?text=Bonjour,%20je%20voudrais%20commander%20un%20Panini%20Fromage" target="_blank" class="btn-gold w-full py-3 text-center text-sm font-bold tracking-wider mt-auto rounded-sm flex justify-center items-center gap-2">
+                                        <i class="fab fa-whatsapp text-lg"></i> <span class="lang-fr">Commander</span><span class="lang-ar">اطلب</span>
+                                    </a>
+                                </div>
+                            </div>
+
                         </div>
                     </div>
-                    <div class="luxury-card rounded-sm overflow-hidden flex flex-col h-full group">
-                        <div class="h-48 overflow-hidden bg-dark flex items-center justify-center">
-                            <i class="fas fa-utensils text-5xl text-gold/30"></i>
-                        </div>
-                        <div class="p-6 flex flex-col flex-grow">
-                            <div class="flex justify-between items-start mb-2">
-                                <h3 class="font-serif text-xl text-gold font-bold">Tacos Mixte</h3>
-                                <span class="text-primary font-bold text-lg">50 DH</span>
+
+                    <!-- Category: Shawarma -->
+                    <div class="mb-8">
+                        <h3 class="text-3xl font-serif text-gold mb-8 border-b border-gold/20 pb-3">Shawarma</h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+                            
+                            <div class="luxury-card rounded-sm overflow-hidden flex flex-col h-full group">
+                                <div class="h-56 overflow-hidden relative">
+                                    <img src="https://images.unsplash.com/photo-1633321702518-7feccafb94d5?auto=format&fit=crop&w=600&q=80" alt="Shawarma Tacos" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
+                                </div>
+                                <div class="p-6 flex flex-col flex-grow">
+                                    <h4 class="font-serif text-xl text-gold font-bold text-center mb-5"><span class="lang-fr">Pain Tacos</span><span class="lang-ar">شاورما بخبز الطاكوس</span></h4>
+                                    <a href="https://wa.me/212764948386?text=Bonjour,%20je%20voudrais%20commander%20Shawarma%20Pain%20Tacos" target="_blank" class="btn-gold w-full py-3 text-center text-sm font-bold tracking-wider mt-auto rounded-sm flex justify-center items-center gap-2">
+                                        <i class="fab fa-whatsapp text-lg"></i> <span class="lang-fr">Commander</span><span class="lang-ar">اطلب</span>
+                                    </a>
+                                </div>
                             </div>
-                            <p class="text-sm text-light/70 mb-4 flex-grow">
-                                <span class="lang-fr">Viande hachée, poulet, frites, sauce fromagère, sauce algérienne.</span>
-                                <span class="lang-ar">لحم مفروم، دجاج، بطاطس مقلية، صلصة الجبن، صلصة جزائرية.</span>
-                            </p>
-                            <a href="https://wa.me/212764948386" target="_blank" class="btn-gold w-full py-2 text-center text-sm font-bold tracking-wider mt-auto rounded-sm flex justify-center items-center gap-2">
-                                <i class="fab fa-whatsapp"></i> <span class="lang-fr">Commander</span><span class="lang-ar">اطلب</span>
-                            </a>
+
+                            <div class="luxury-card rounded-sm overflow-hidden flex flex-col h-full group">
+                                <div class="h-56 overflow-hidden relative">
+                                    <img src="https://images.unsplash.com/photo-1633321702518-7feccafb94d5?auto=format&fit=crop&w=600&q=80" alt="Shawarma Bowl" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
+                                </div>
+                                <div class="p-6 flex flex-col flex-grow">
+                                    <h4 class="font-serif text-xl text-gold font-bold text-center mb-5"><span class="lang-fr">Shawarma Bowl</span><span class="lang-ar">شاورما بول</span></h4>
+                                    <a href="https://wa.me/212764948386?text=Bonjour,%20je%20voudrais%20commander%20un%20Shawarma%20Bowl" target="_blank" class="btn-gold w-full py-3 text-center text-sm font-bold tracking-wider mt-auto rounded-sm flex justify-center items-center gap-2">
+                                        <i class="fab fa-whatsapp text-lg"></i> <span class="lang-fr">Commander</span><span class="lang-ar">اطلب</span>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div class="luxury-card rounded-sm overflow-hidden flex flex-col h-full group">
+                                <div class="h-56 overflow-hidden relative">
+                                    <img src="https://images.unsplash.com/photo-1633321702518-7feccafb94d5?auto=format&fit=crop&w=600&q=80" alt="Shawarma Extra" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
+                                </div>
+                                <div class="p-6 flex flex-col flex-grow">
+                                    <h4 class="font-serif text-xl text-gold font-bold text-center mb-5"><span class="lang-fr">Extra (Saroth XXL)</span><span class="lang-ar">إكسترا (ساروت XXL)</span></h4>
+                                    <a href="https://wa.me/212764948386?text=Bonjour,%20je%20voudrais%20commander%20Shawarma%20Extra%20Saroth%20XXL" target="_blank" class="btn-gold w-full py-3 text-center text-sm font-bold tracking-wider mt-auto rounded-sm flex justify-center items-center gap-2">
+                                        <i class="fab fa-whatsapp text-lg"></i> <span class="lang-fr">Commander</span><span class="lang-ar">اطلب</span>
+                                    </a>
+                                </div>
+                            </div>
+
                         </div>
                     </div>
                 </div>
 
-                <!-- Plats Tab (Hidden by default) -->
-                <div id="plats" class="tab-content hidden grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <div class="luxury-card rounded-sm overflow-hidden flex flex-col h-full group">
-                        <div class="h-48 overflow-hidden bg-dark flex items-center justify-center">
-                             <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Salade" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
-                        </div>
-                        <div class="p-6 flex flex-col flex-grow">
-                            <div class="flex justify-between items-start mb-2">
-                                <h3 class="font-serif text-xl text-gold font-bold">Salade César</h3>
-                                <span class="text-primary font-bold text-lg">45 DH</span>
+                <!-- TAB 3: Pasta & Pastichio -->
+                <div id="tab-pasta" class="tab-content hidden">
+                    <!-- Category: Pasta -->
+                    <div class="mb-16">
+                        <h3 class="text-3xl font-serif text-gold mb-8 border-b border-gold/20 pb-3">Pasta</h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+                            
+                            <div class="luxury-card rounded-sm overflow-hidden flex flex-col h-full group">
+                                <div class="h-56 overflow-hidden relative">
+                                    <img src="https://images.unsplash.com/photo-1621996316565-1b5eb9a8cd4b?auto=format&fit=crop&w=600&q=80" alt="Pasta Carbonara" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
+                                </div>
+                                <div class="p-6 flex flex-col flex-grow">
+                                    <h4 class="font-serif text-xl text-gold font-bold text-center mb-5"><span class="lang-fr">Carbonara</span><span class="lang-ar">باستا كاربونارا</span></h4>
+                                    <a href="https://wa.me/212764948386?text=Bonjour,%20je%20voudrais%20commander%20une%20Pasta%20Carbonara" target="_blank" class="btn-gold w-full py-3 text-center text-sm font-bold tracking-wider mt-auto rounded-sm flex justify-center items-center gap-2">
+                                        <i class="fab fa-whatsapp text-lg"></i> <span class="lang-fr">Commander</span><span class="lang-ar">اطلب</span>
+                                    </a>
+                                </div>
                             </div>
-                            <p class="text-sm text-light/70 mb-4 flex-grow">
-                                <span class="lang-fr">Laitue, poulet grillé, croûtons, parmesan, sauce césar.</span>
-                                <span class="lang-ar">خس، دجاج مشوي، خبز محمص، بارميزان، صلصة سيزر.</span>
-                            </p>
-                            <a href="https://wa.me/212764948386" target="_blank" class="btn-gold w-full py-2 text-center text-sm font-bold tracking-wider mt-auto rounded-sm flex justify-center items-center gap-2">
-                                <i class="fab fa-whatsapp"></i> <span class="lang-fr">Commander</span><span class="lang-ar">اطلب</span>
-                            </a>
+
+                            <div class="luxury-card rounded-sm overflow-hidden flex flex-col h-full group">
+                                <div class="h-56 overflow-hidden relative">
+                                    <img src="https://images.unsplash.com/photo-1621996316565-1b5eb9a8cd4b?auto=format&fit=crop&w=600&q=80" alt="Pasta Poulet" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
+                                </div>
+                                <div class="p-6 flex flex-col flex-grow">
+                                    <h4 class="font-serif text-xl text-gold font-bold text-center mb-5"><span class="lang-fr">Poulet Champignon</span><span class="lang-ar">باستا دجاج وفطر</span></h4>
+                                    <a href="https://wa.me/212764948386?text=Bonjour,%20je%20voudrais%20commander%20une%20Pasta%20Poulet%20Champignon" target="_blank" class="btn-gold w-full py-3 text-center text-sm font-bold tracking-wider mt-auto rounded-sm flex justify-center items-center gap-2">
+                                        <i class="fab fa-whatsapp text-lg"></i> <span class="lang-fr">Commander</span><span class="lang-ar">اطلب</span>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div class="luxury-card rounded-sm overflow-hidden flex flex-col h-full group">
+                                <div class="h-56 overflow-hidden relative">
+                                    <img src="https://images.unsplash.com/photo-1621996316565-1b5eb9a8cd4b?auto=format&fit=crop&w=600&q=80" alt="Pasta Thon" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
+                                </div>
+                                <div class="p-6 flex flex-col flex-grow">
+                                    <h4 class="font-serif text-xl text-gold font-bold text-center mb-5"><span class="lang-fr">Thon</span><span class="lang-ar">باستا تونة</span></h4>
+                                    <a href="https://wa.me/212764948386?text=Bonjour,%20je%20voudrais%20commander%20une%20Pasta%20Thon" target="_blank" class="btn-gold w-full py-3 text-center text-sm font-bold tracking-wider mt-auto rounded-sm flex justify-center items-center gap-2">
+                                        <i class="fab fa-whatsapp text-lg"></i> <span class="lang-fr">Commander</span><span class="lang-ar">اطلب</span>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div class="luxury-card rounded-sm overflow-hidden flex flex-col h-full group">
+                                <div class="h-56 overflow-hidden relative">
+                                    <img src="https://images.unsplash.com/photo-1621996316565-1b5eb9a8cd4b?auto=format&fit=crop&w=600&q=80" alt="Pasta Bolognoise" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
+                                </div>
+                                <div class="p-6 flex flex-col flex-grow">
+                                    <h4 class="font-serif text-xl text-gold font-bold text-center mb-5"><span class="lang-fr">Bolognoise</span><span class="lang-ar">باستا بولونيز</span></h4>
+                                    <a href="https://wa.me/212764948386?text=Bonjour,%20je%20voudrais%20commander%20une%20Pasta%20Bolognoise" target="_blank" class="btn-gold w-full py-3 text-center text-sm font-bold tracking-wider mt-auto rounded-sm flex justify-center items-center gap-2">
+                                        <i class="fab fa-whatsapp text-lg"></i> <span class="lang-fr">Commander</span><span class="lang-ar">اطلب</span>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div class="luxury-card rounded-sm overflow-hidden flex flex-col h-full group">
+                                <div class="h-56 overflow-hidden relative">
+                                    <img src="https://images.unsplash.com/photo-1621996316565-1b5eb9a8cd4b?auto=format&fit=crop&w=600&q=80" alt="Pasta Fruits de Mer" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
+                                </div>
+                                <div class="p-6 flex flex-col flex-grow">
+                                    <h4 class="font-serif text-xl text-gold font-bold text-center mb-5"><span class="lang-fr">Fruits de Mer</span><span class="lang-ar">باستا فواكه البحر</span></h4>
+                                    <a href="https://wa.me/212764948386?text=Bonjour,%20je%20voudrais%20commander%20une%20Pasta%20Fruits%20de%20Mer" target="_blank" class="btn-gold w-full py-3 text-center text-sm font-bold tracking-wider mt-auto rounded-sm flex justify-center items-center gap-2">
+                                        <i class="fab fa-whatsapp text-lg"></i> <span class="lang-fr">Commander</span><span class="lang-ar">اطلب</span>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div class="luxury-card rounded-sm overflow-hidden flex flex-col h-full group">
+                                <div class="h-56 overflow-hidden relative">
+                                    <img src="https://images.unsplash.com/photo-1621996316565-1b5eb9a8cd4b?auto=format&fit=crop&w=600&q=80" alt="Pasta Saucisse" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
+                                </div>
+                                <div class="p-6 flex flex-col flex-grow">
+                                    <h4 class="font-serif text-xl text-gold font-bold text-center mb-5"><span class="lang-fr">Saucisse</span><span class="lang-ar">باستا نقانق</span></h4>
+                                    <a href="https://wa.me/212764948386?text=Bonjour,%20je%20voudrais%20commander%20une%20Pasta%20Saucisse" target="_blank" class="btn-gold w-full py-3 text-center text-sm font-bold tracking-wider mt-auto rounded-sm flex justify-center items-center gap-2">
+                                        <i class="fab fa-whatsapp text-lg"></i> <span class="lang-fr">Commander</span><span class="lang-ar">اطلب</span>
+                                    </a>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <!-- Category: Pastichio -->
+                    <div class="mb-8">
+                        <h3 class="text-3xl font-serif text-gold mb-8 border-b border-gold/20 pb-3">Pastichio</h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+                            
+                            <div class="luxury-card rounded-sm overflow-hidden flex flex-col h-full group">
+                                <div class="h-56 overflow-hidden relative">
+                                    <img src="https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?auto=format&fit=crop&w=600&q=80" alt="Pastichio Poulet" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
+                                </div>
+                                <div class="p-6 flex flex-col flex-grow">
+                                    <h4 class="font-serif text-xl text-gold font-bold text-center mb-5"><span class="lang-fr">Poulet</span><span class="lang-ar">باستيشيو دجاج</span></h4>
+                                    <a href="https://wa.me/212764948386?text=Bonjour,%20je%20voudrais%20commander%20un%20Pastichio%20Poulet" target="_blank" class="btn-gold w-full py-3 text-center text-sm font-bold tracking-wider mt-auto rounded-sm flex justify-center items-center gap-2">
+                                        <i class="fab fa-whatsapp text-lg"></i> <span class="lang-fr">Commander</span><span class="lang-ar">اطلب</span>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div class="luxury-card rounded-sm overflow-hidden flex flex-col h-full group">
+                                <div class="h-56 overflow-hidden relative">
+                                    <img src="https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?auto=format&fit=crop&w=600&q=80" alt="Pastichio Charcuterie" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
+                                </div>
+                                <div class="p-6 flex flex-col flex-grow">
+                                    <h4 class="font-serif text-xl text-gold font-bold text-center mb-5"><span class="lang-fr">Charcuterie</span><span class="lang-ar">باستيشيو شاركوتريه</span></h4>
+                                    <a href="https://wa.me/212764948386?text=Bonjour,%20je%20voudrais%20commander%20un%20Pastichio%20Charcuterie" target="_blank" class="btn-gold w-full py-3 text-center text-sm font-bold tracking-wider mt-auto rounded-sm flex justify-center items-center gap-2">
+                                        <i class="fab fa-whatsapp text-lg"></i> <span class="lang-fr">Commander</span><span class="lang-ar">اطلب</span>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div class="luxury-card rounded-sm overflow-hidden flex flex-col h-full group">
+                                <div class="h-56 overflow-hidden relative">
+                                    <img src="https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?auto=format&fit=crop&w=600&q=80" alt="Pastichio Viande Hachée" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
+                                </div>
+                                <div class="p-6 flex flex-col flex-grow">
+                                    <h4 class="font-serif text-xl text-gold font-bold text-center mb-5"><span class="lang-fr">Viande Hachée</span><span class="lang-ar">باستيشيو لحم مفروم</span></h4>
+                                    <a href="https://wa.me/212764948386?text=Bonjour,%20je%20voudrais%20commander%20un%20Pastichio%20Viande%20Hachée" target="_blank" class="btn-gold w-full py-3 text-center text-sm font-bold tracking-wider mt-auto rounded-sm flex justify-center items-center gap-2">
+                                        <i class="fab fa-whatsapp text-lg"></i> <span class="lang-fr">Commander</span><span class="lang-ar">اطلب</span>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div class="luxury-card rounded-sm overflow-hidden flex flex-col h-full group">
+                                <div class="h-56 overflow-hidden relative">
+                                    <img src="https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?auto=format&fit=crop&w=600&q=80" alt="Pastichio Mixte" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
+                                </div>
+                                <div class="p-6 flex flex-col flex-grow">
+                                    <h4 class="font-serif text-xl text-gold font-bold text-center mb-5"><span class="lang-fr">Mixte</span><span class="lang-ar">باستيشيو ميكس</span></h4>
+                                    <a href="https://wa.me/212764948386?text=Bonjour,%20je%20voudrais%20commander%20un%20Pastichio%20Mixte" target="_blank" class="btn-gold w-full py-3 text-center text-sm font-bold tracking-wider mt-auto rounded-sm flex justify-center items-center gap-2">
+                                        <i class="fab fa-whatsapp text-lg"></i> <span class="lang-fr">Commander</span><span class="lang-ar">اطلب</span>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div class="luxury-card rounded-sm overflow-hidden flex flex-col h-full group">
+                                <div class="h-56 overflow-hidden relative">
+                                    <img src="https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?auto=format&fit=crop&w=600&q=80" alt="Pastichio Fruits de Mer" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
+                                </div>
+                                <div class="p-6 flex flex-col flex-grow">
+                                    <h4 class="font-serif text-xl text-gold font-bold text-center mb-5"><span class="lang-fr">Fruits de Mer</span><span class="lang-ar">باستيشيو فواكه البحر</span></h4>
+                                    <a href="https://wa.me/212764948386?text=Bonjour,%20je%20voudrais%20commander%20un%20Pastichio%20Fruits%20de%20Mer" target="_blank" class="btn-gold w-full py-3 text-center text-sm font-bold tracking-wider mt-auto rounded-sm flex justify-center items-center gap-2">
+                                        <i class="fab fa-whatsapp text-lg"></i> <span class="lang-fr">Commander</span><span class="lang-ar">اطلب</span>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div class="luxury-card rounded-sm overflow-hidden flex flex-col h-full group">
+                                <div class="h-56 overflow-hidden relative">
+                                    <img src="https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?auto=format&fit=crop&w=600&q=80" alt="Pastichio Saucisse" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
+                                </div>
+                                <div class="p-6 flex flex-col flex-grow">
+                                    <h4 class="font-serif text-xl text-gold font-bold text-center mb-5"><span class="lang-fr">Saucisse</span><span class="lang-ar">باستيشيو نقانق</span></h4>
+                                    <a href="https://wa.me/212764948386?text=Bonjour,%20je%20voudrais%20commander%20un%20Pastichio%20Saucisse" target="_blank" class="btn-gold w-full py-3 text-center text-sm font-bold tracking-wider mt-auto rounded-sm flex justify-center items-center gap-2">
+                                        <i class="fab fa-whatsapp text-lg"></i> <span class="lang-fr">Commander</span><span class="lang-ar">اطلب</span>
+                                    </a>
+                                </div>
+                            </div>
+
                         </div>
                     </div>
                 </div>
 
-                <!-- Boissons Tab (Hidden by default) -->
-                <div id="boissons" class="tab-content hidden grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <div class="luxury-card rounded-sm overflow-hidden flex flex-col h-full group">
-                        <div class="h-48 overflow-hidden bg-dark flex items-center justify-center">
-                            <i class="fas fa-glass-water text-5xl text-gold/30"></i>
-                        </div>
-                        <div class="p-6 flex flex-col flex-grow">
-                            <div class="flex justify-between items-start mb-2">
-                                <h3 class="font-serif text-xl text-gold font-bold">Tiramisu Maison</h3>
-                                <span class="text-primary font-bold text-lg">35 DH</span>
+                <!-- TAB 4: Tacos & Crispy -->
+                <div id="tab-tacos" class="tab-content hidden">
+                    <!-- Category: Tacos -->
+                    <div class="mb-16">
+                        <h3 class="text-3xl font-serif text-gold mb-8 border-b border-gold/20 pb-3">Tacos</h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+                            
+                            <div class="luxury-card rounded-sm overflow-hidden flex flex-col h-full group">
+                                <div class="h-56 overflow-hidden relative">
+                                    <img src="https://images.unsplash.com/photo-1565299507177-b0ac66763828?auto=format&fit=crop&w=600&q=80" alt="Tacos Viande" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
+                                </div>
+                                <div class="p-6 flex flex-col flex-grow">
+                                    <h4 class="font-serif text-xl text-gold font-bold text-center mb-5"><span class="lang-fr">Tacos Viande</span><span class="lang-ar">طاكوس لحم</span></h4>
+                                    <a href="https://wa.me/212764948386?text=Bonjour,%20je%20voudrais%20commander%20un%20Tacos%20Viande" target="_blank" class="btn-gold w-full py-3 text-center text-sm font-bold tracking-wider mt-auto rounded-sm flex justify-center items-center gap-2">
+                                        <i class="fab fa-whatsapp text-lg"></i> <span class="lang-fr">Commander</span><span class="lang-ar">اطلب</span>
+                                    </a>
+                                </div>
                             </div>
-                            <p class="text-sm text-light/70 mb-4 flex-grow">
-                                <span class="lang-fr">Véritable recette italienne au café et mascarpone.</span>
-                                <span class="lang-ar">وصفة إيطالية أصلية بالقهوة والمسكربون.</span>
-                            </p>
-                            <a href="https://wa.me/212764948386" target="_blank" class="btn-gold w-full py-2 text-center text-sm font-bold tracking-wider mt-auto rounded-sm flex justify-center items-center gap-2">
-                                <i class="fab fa-whatsapp"></i> <span class="lang-fr">Commander</span><span class="lang-ar">اطلب</span>
-                            </a>
+
+                            <div class="luxury-card rounded-sm overflow-hidden flex flex-col h-full group">
+                                <div class="h-56 overflow-hidden relative">
+                                    <img src="https://images.unsplash.com/photo-1565299507177-b0ac66763828?auto=format&fit=crop&w=600&q=80" alt="Tacos Poulet" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
+                                </div>
+                                <div class="p-6 flex flex-col flex-grow">
+                                    <h4 class="font-serif text-xl text-gold font-bold text-center mb-5"><span class="lang-fr">Tacos Poulet</span><span class="lang-ar">طاكوس دجاج</span></h4>
+                                    <a href="https://wa.me/212764948386?text=Bonjour,%20je%20voudrais%20commander%20un%20Tacos%20Poulet" target="_blank" class="btn-gold w-full py-3 text-center text-sm font-bold tracking-wider mt-auto rounded-sm flex justify-center items-center gap-2">
+                                        <i class="fab fa-whatsapp text-lg"></i> <span class="lang-fr">Commander</span><span class="lang-ar">اطلب</span>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div class="luxury-card rounded-sm overflow-hidden flex flex-col h-full group">
+                                <div class="h-56 overflow-hidden relative">
+                                    <img src="https://images.unsplash.com/photo-1565299507177-b0ac66763828?auto=format&fit=crop&w=600&q=80" alt="Tacos Saucisse" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
+                                </div>
+                                <div class="p-6 flex flex-col flex-grow">
+                                    <h4 class="font-serif text-xl text-gold font-bold text-center mb-5"><span class="lang-fr">Tacos Saucisse</span><span class="lang-ar">طاكوس نقانق</span></h4>
+                                    <a href="https://wa.me/212764948386?text=Bonjour,%20je%20voudrais%20commander%20un%20Tacos%20Saucisse" target="_blank" class="btn-gold w-full py-3 text-center text-sm font-bold tracking-wider mt-auto rounded-sm flex justify-center items-center gap-2">
+                                        <i class="fab fa-whatsapp text-lg"></i> <span class="lang-fr">Commander</span><span class="lang-ar">اطلب</span>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div class="luxury-card rounded-sm overflow-hidden flex flex-col h-full group">
+                                <div class="h-56 overflow-hidden relative">
+                                    <img src="https://images.unsplash.com/photo-1565299507177-b0ac66763828?auto=format&fit=crop&w=600&q=80" alt="Tacos Mixte" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
+                                </div>
+                                <div class="p-6 flex flex-col flex-grow">
+                                    <h4 class="font-serif text-xl text-gold font-bold text-center mb-5"><span class="lang-fr">Tacos Mixte</span><span class="lang-ar">طاكوس ميكس</span></h4>
+                                    <a href="https://wa.me/212764948386?text=Bonjour,%20je%20voudrais%20commander%20un%20Tacos%20Mixte" target="_blank" class="btn-gold w-full py-3 text-center text-sm font-bold tracking-wider mt-auto rounded-sm flex justify-center items-center gap-2">
+                                        <i class="fab fa-whatsapp text-lg"></i> <span class="lang-fr">Commander</span><span class="lang-ar">اطلب</span>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div class="luxury-card rounded-sm overflow-hidden flex flex-col h-full group">
+                                <div class="h-56 overflow-hidden relative">
+                                    <img src="https://images.unsplash.com/photo-1565299507177-b0ac66763828?auto=format&fit=crop&w=600&q=80" alt="Tacos Nuggets" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
+                                </div>
+                                <div class="p-6 flex flex-col flex-grow">
+                                    <h4 class="font-serif text-xl text-gold font-bold text-center mb-5"><span class="lang-fr">Tacos Nuggets</span><span class="lang-ar">طاكوس ناجتس</span></h4>
+                                    <a href="https://wa.me/212764948386?text=Bonjour,%20je%20voudrais%20commander%20un%20Tacos%20Nuggets" target="_blank" class="btn-gold w-full py-3 text-center text-sm font-bold tracking-wider mt-auto rounded-sm flex justify-center items-center gap-2">
+                                        <i class="fab fa-whatsapp text-lg"></i> <span class="lang-fr">Commander</span><span class="lang-ar">اطلب</span>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div class="luxury-card rounded-sm overflow-hidden flex flex-col h-full group">
+                                <div class="h-56 overflow-hidden relative">
+                                    <img src="https://images.unsplash.com/photo-1565299507177-b0ac66763828?auto=format&fit=crop&w=600&q=80" alt="Tacos Cordon Bleu" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
+                                </div>
+                                <div class="p-6 flex flex-col flex-grow">
+                                    <h4 class="font-serif text-xl text-gold font-bold text-center mb-5"><span class="lang-fr">Tacos Cordon Bleu</span><span class="lang-ar">طاكوس كوردون بلو</span></h4>
+                                    <a href="https://wa.me/212764948386?text=Bonjour,%20je%20voudrais%20commander%20un%20Tacos%20Cordon%20Bleu" target="_blank" class="btn-gold w-full py-3 text-center text-sm font-bold tracking-wider mt-auto rounded-sm flex justify-center items-center gap-2">
+                                        <i class="fab fa-whatsapp text-lg"></i> <span class="lang-fr">Commander</span><span class="lang-ar">اطلب</span>
+                                    </a>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <!-- Category: Crispy -->
+                    <div class="mb-8">
+                        <h3 class="text-3xl font-serif text-gold mb-8 border-b border-gold/20 pb-3">Crispy</h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+                            
+                            <div class="luxury-card rounded-sm overflow-hidden flex flex-col h-full group">
+                                <div class="h-56 overflow-hidden relative">
+                                    <img src="https://images.unsplash.com/photo-1626082927389-6cd097cdc6ec?auto=format&fit=crop&w=600&q=80" alt="Cuisses de Poulet Crispy" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
+                                </div>
+                                <div class="p-6 flex flex-col flex-grow">
+                                    <h4 class="font-serif text-xl text-gold font-bold text-center mb-5"><span class="lang-fr">Cuisses de Poulet Crispy</span><span class="lang-ar">أفخاذ دجاج مقرمشة</span></h4>
+                                    <a href="https://wa.me/212764948386?text=Bonjour,%20je%20voudrais%20commander%20Cuisses%20de%20Poulet%20Crispy" target="_blank" class="btn-gold w-full py-3 text-center text-sm font-bold tracking-wider mt-auto rounded-sm flex justify-center items-center gap-2">
+                                        <i class="fab fa-whatsapp text-lg"></i> <span class="lang-fr">Commander</span><span class="lang-ar">اطلب</span>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div class="luxury-card rounded-sm overflow-hidden flex flex-col h-full group">
+                                <div class="h-56 overflow-hidden relative">
+                                    <img src="https://images.unsplash.com/photo-1626082927389-6cd097cdc6ec?auto=format&fit=crop&w=600&q=80" alt="Crispy Spicy" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
+                                </div>
+                                <div class="p-6 flex flex-col flex-grow">
+                                    <h4 class="font-serif text-xl text-gold font-bold text-center mb-5"><span class="lang-fr">Crispy Spicy</span><span class="lang-ar">كريسبي حار</span></h4>
+                                    <a href="https://wa.me/212764948386?text=Bonjour,%20je%20voudrais%20commander%20un%20Crispy%20Spicy" target="_blank" class="btn-gold w-full py-3 text-center text-sm font-bold tracking-wider mt-auto rounded-sm flex justify-center items-center gap-2">
+                                        <i class="fab fa-whatsapp text-lg"></i> <span class="lang-fr">Commander</span><span class="lang-ar">اطلب</span>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div class="luxury-card rounded-sm overflow-hidden flex flex-col h-full group">
+                                <div class="h-56 overflow-hidden relative">
+                                    <img src="https://images.unsplash.com/photo-1626082927389-6cd097cdc6ec?auto=format&fit=crop&w=600&q=80" alt="Crousti-Galleria" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
+                                </div>
+                                <div class="p-6 flex flex-col flex-grow">
+                                    <h4 class="font-serif text-xl text-gold font-bold text-center mb-5"><span class="lang-fr">Crousti-Galleria</span><span class="lang-ar">كروستي غاليريا</span></h4>
+                                    <a href="https://wa.me/212764948386?text=Bonjour,%20je%20voudrais%20commander%20un%20Crousti-Galleria" target="_blank" class="btn-gold w-full py-3 text-center text-sm font-bold tracking-wider mt-auto rounded-sm flex justify-center items-center gap-2">
+                                        <i class="fab fa-whatsapp text-lg"></i> <span class="lang-fr">Commander</span><span class="lang-ar">اطلب</span>
+                                    </a>
+                                </div>
+                            </div>
+
                         </div>
                     </div>
                 </div>
+
+                <!-- TAB 5: Lasagne & Plats -->
+                <div id="tab-plats" class="tab-content hidden">
+                    <!-- Category: Lasagne -->
+                    <div class="mb-16">
+                        <h3 class="text-3xl font-serif text-gold mb-8 border-b border-gold/20 pb-3">Lasagne</h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+                            
+                            <div class="luxury-card rounded-sm overflow-hidden flex flex-col h-full group">
+                                <div class="h-56 overflow-hidden relative">
+                                    <img src="https://images.unsplash.com/photo-1619881589316-56c7f9e6b587?auto=format&fit=crop&w=600&q=80" alt="Lasagne Bolognoise" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
+                                </div>
+                                <div class="p-6 flex flex-col flex-grow">
+                                    <h4 class="font-serif text-xl text-gold font-bold text-center mb-5"><span class="lang-fr">Bolognoise</span><span class="lang-ar">لازانيا بولونيز</span></h4>
+                                    <a href="https://wa.me/212764948386?text=Bonjour,%20je%20voudrais%20commander%20une%20Lasagne%20Bolognoise" target="_blank" class="btn-gold w-full py-3 text-center text-sm font-bold tracking-wider mt-auto rounded-sm flex justify-center items-center gap-2">
+                                        <i class="fab fa-whatsapp text-lg"></i> <span class="lang-fr">Commander</span><span class="lang-ar">اطلب</span>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div class="luxury-card rounded-sm overflow-hidden flex flex-col h-full group">
+                                <div class="h-56 overflow-hidden relative">
+                                    <img src="https://images.unsplash.com/photo-1619881589316-56c7f9e6b587?auto=format&fit=crop&w=600&q=80" alt="Lasagne Poulet" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
+                                </div>
+                                <div class="p-6 flex flex-col flex-grow">
+                                    <h4 class="font-serif text-xl text-gold font-bold text-center mb-5"><span class="lang-fr">Poulet</span><span class="lang-ar">لازانيا دجاج</span></h4>
+                                    <a href="https://wa.me/212764948386?text=Bonjour,%20je%20voudrais%20commander%20une%20Lasagne%20Poulet" target="_blank" class="btn-gold w-full py-3 text-center text-sm font-bold tracking-wider mt-auto rounded-sm flex justify-center items-center gap-2">
+                                        <i class="fab fa-whatsapp text-lg"></i> <span class="lang-fr">Commander</span><span class="lang-ar">اطلب</span>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div class="luxury-card rounded-sm overflow-hidden flex flex-col h-full group">
+                                <div class="h-56 overflow-hidden relative">
+                                    <img src="https://images.unsplash.com/photo-1619881589316-56c7f9e6b587?auto=format&fit=crop&w=600&q=80" alt="Lasagne Fruits de Mer" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
+                                </div>
+                                <div class="p-6 flex flex-col flex-grow">
+                                    <h4 class="font-serif text-xl text-gold font-bold text-center mb-5"><span class="lang-fr">Fruits de Mer</span><span class="lang-ar">لازانيا فواكه البحر</span></h4>
+                                    <a href="https://wa.me/212764948386?text=Bonjour,%20je%20voudrais%20commander%20une%20Lasagne%20Fruits%20de%20Mer" target="_blank" class="btn-gold w-full py-3 text-center text-sm font-bold tracking-wider mt-auto rounded-sm flex justify-center items-center gap-2">
+                                        <i class="fab fa-whatsapp text-lg"></i> <span class="lang-fr">Commander</span><span class="lang-ar">اطلب</span>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div class="luxury-card rounded-sm overflow-hidden flex flex-col h-full group">
+                                <div class="h-56 overflow-hidden relative">
+                                    <img src="https://images.unsplash.com/photo-1619881589316-56c7f9e6b587?auto=format&fit=crop&w=600&q=80" alt="Lasagne Mixte" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
+                                </div>
+                                <div class="p-6 flex flex-col flex-grow">
+                                    <h4 class="font-serif text-xl text-gold font-bold text-center mb-5"><span class="lang-fr">Mixte</span><span class="lang-ar">لازانيا ميكس</span></h4>
+                                    <a href="https://wa.me/212764948386?text=Bonjour,%20je%20voudrais%20commander%20une%20Lasagne%20Mixte" target="_blank" class="btn-gold w-full py-3 text-center text-sm font-bold tracking-wider mt-auto rounded-sm flex justify-center items-center gap-2">
+                                        <i class="fab fa-whatsapp text-lg"></i> <span class="lang-fr">Commander</span><span class="lang-ar">اطلب</span>
+                                    </a>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <!-- Category: Plats -->
+                    <div class="mb-8">
+                        <h3 class="text-3xl font-serif text-gold mb-8 border-b border-gold/20 pb-3">Plats</h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+                            
+                            <div class="luxury-card rounded-sm overflow-hidden flex flex-col h-full group">
+                                <div class="h-56 overflow-hidden relative">
+                                    <img src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=600&q=80" alt="Plat Nuggets" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
+                                </div>
+                                <div class="p-6 flex flex-col flex-grow">
+                                    <h4 class="font-serif text-xl text-gold font-bold text-center mb-5"><span class="lang-fr">Nuggets</span><span class="lang-ar">طبق ناجتس</span></h4>
+                                    <a href="https://wa.me/212764948386?text=Bonjour,%20je%20voudrais%20commander%20un%20Plat%20Nuggets" target="_blank" class="btn-gold w-full py-3 text-center text-sm font-bold tracking-wider mt-auto rounded-sm flex justify-center items-center gap-2">
+                                        <i class="fab fa-whatsapp text-lg"></i> <span class="lang-fr">Commander</span><span class="lang-ar">اطلب</span>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div class="luxury-card rounded-sm overflow-hidden flex flex-col h-full group">
+                                <div class="h-56 overflow-hidden relative">
+                                    <img src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=600&q=80" alt="Plat Emincé de poulet" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
+                                </div>
+                                <div class="p-6 flex flex-col flex-grow">
+                                    <h4 class="font-serif text-xl text-gold font-bold text-center mb-5"><span class="lang-fr">Emincé de poulet</span><span class="lang-ar">شرائح الدجاج</span></h4>
+                                    <a href="https://wa.me/212764948386?text=Bonjour,%20je%20voudrais%20commander%20un%20Plat%20Emincé%20de%20poulet" target="_blank" class="btn-gold w-full py-3 text-center text-sm font-bold tracking-wider mt-auto rounded-sm flex justify-center items-center gap-2">
+                                        <i class="fab fa-whatsapp text-lg"></i> <span class="lang-fr">Commander</span><span class="lang-ar">اطلب</span>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div class="luxury-card rounded-sm overflow-hidden flex flex-col h-full group">
+                                <div class="h-56 overflow-hidden relative">
+                                    <img src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=600&q=80" alt="Plat Mixte Grillé" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
+                                </div>
+                                <div class="p-6 flex flex-col flex-grow">
+                                    <h4 class="font-serif text-xl text-gold font-bold text-center mb-5"><span class="lang-fr">Mixte Grillé</span><span class="lang-ar">مشاوي مشكلة</span></h4>
+                                    <a href="https://wa.me/212764948386?text=Bonjour,%20je%20voudrais%20commander%20un%20Plat%20Mixte%20Grillé" target="_blank" class="btn-gold w-full py-3 text-center text-sm font-bold tracking-wider mt-auto rounded-sm flex justify-center items-center gap-2">
+                                        <i class="fab fa-whatsapp text-lg"></i> <span class="lang-fr">Commander</span><span class="lang-ar">اطلب</span>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div class="luxury-card rounded-sm overflow-hidden flex flex-col h-full group">
+                                <div class="h-56 overflow-hidden relative">
+                                    <img src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=600&q=80" alt="Plat Cordon bleue" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
+                                </div>
+                                <div class="p-6 flex flex-col flex-grow">
+                                    <h4 class="font-serif text-xl text-gold font-bold text-center mb-5"><span class="lang-fr">Cordon bleue</span><span class="lang-ar">كوردون بلو</span></h4>
+                                    <a href="https://wa.me/212764948386?text=Bonjour,%20je%20voudrais%20commander%20un%20Plat%20Cordon%20bleue" target="_blank" class="btn-gold w-full py-3 text-center text-sm font-bold tracking-wider mt-auto rounded-sm flex justify-center items-center gap-2">
+                                        <i class="fab fa-whatsapp text-lg"></i> <span class="lang-fr">Commander</span><span class="lang-ar">اطلب</span>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div class="luxury-card rounded-sm overflow-hidden flex flex-col h-full group">
+                                <div class="h-56 overflow-hidden relative">
+                                    <img src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=600&q=80" alt="Plat Brochette Poulet" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
+                                </div>
+                                <div class="p-6 flex flex-col flex-grow">
+                                    <h4 class="font-serif text-xl text-gold font-bold text-center mb-5"><span class="lang-fr">Brochette Poulet</span><span class="lang-ar">أسياخ دجاج</span></h4>
+                                    <a href="https://wa.me/212764948386?text=Bonjour,%20je%20voudrais%20commander%20un%20Plat%20Brochette%20Poulet" target="_blank" class="btn-gold w-full py-3 text-center text-sm font-bold tracking-wider mt-auto rounded-sm flex justify-center items-center gap-2">
+                                        <i class="fab fa-whatsapp text-lg"></i> <span class="lang-fr">Commander</span><span class="lang-ar">اطلب</span>
+                                    </a>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TAB 6: Salades & Suppléments -->
+                <div id="tab-salades" class="tab-content hidden">
+                    <!-- Category: Salades -->
+                    <div class="mb-16">
+                        <h3 class="text-3xl font-serif text-gold mb-8 border-b border-gold/20 pb-3">Salades</h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+                            
+                            <div class="luxury-card rounded-sm overflow-hidden flex flex-col h-full group">
+                                <div class="h-56 overflow-hidden relative">
+                                    <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=600&q=80" alt="Salade Fraîcheur" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
+                                </div>
+                                <div class="p-6 flex flex-col flex-grow">
+                                    <h4 class="font-serif text-xl text-gold font-bold text-center mb-5"><span class="lang-fr">Salade Fraîcheur</span><span class="lang-ar">سلطة طازجة</span></h4>
+                                    <a href="https://wa.me/212764948386?text=Bonjour,%20je%20voudrais%20commander%20une%20Salade%20Fraîcheur" target="_blank" class="btn-gold w-full py-3 text-center text-sm font-bold tracking-wider mt-auto rounded-sm flex justify-center items-center gap-2">
+                                        <i class="fab fa-whatsapp text-lg"></i> <span class="lang-fr">Commander</span><span class="lang-ar">اطلب</span>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div class="luxury-card rounded-sm overflow-hidden flex flex-col h-full group">
+                                <div class="h-56 overflow-hidden relative">
+                                    <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=600&q=80" alt="Salade Marocaine" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
+                                </div>
+                                <div class="p-6 flex flex-col flex-grow">
+                                    <h4 class="font-serif text-xl text-gold font-bold text-center mb-5"><span class="lang-fr">Salade Marocaine</span><span class="lang-ar">سلطة مغربية</span></h4>
+                                    <a href="https://wa.me/212764948386?text=Bonjour,%20je%20voudrais%20commander%20une%20Salade%20Marocaine" target="_blank" class="btn-gold w-full py-3 text-center text-sm font-bold tracking-wider mt-auto rounded-sm flex justify-center items-center gap-2">
+                                        <i class="fab fa-whatsapp text-lg"></i> <span class="lang-fr">Commander</span><span class="lang-ar">اطلب</span>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div class="luxury-card rounded-sm overflow-hidden flex flex-col h-full group">
+                                <div class="h-56 overflow-hidden relative">
+                                    <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=600&q=80" alt="Salade Italie" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
+                                </div>
+                                <div class="p-6 flex flex-col flex-grow">
+                                    <h4 class="font-serif text-xl text-gold font-bold text-center mb-5"><span class="lang-fr">Salade Italie</span><span class="lang-ar">سلطة إيطالية</span></h4>
+                                    <a href="https://wa.me/212764948386?text=Bonjour,%20je%20voudrais%20commander%20une%20Salade%20Italie" target="_blank" class="btn-gold w-full py-3 text-center text-sm font-bold tracking-wider mt-auto rounded-sm flex justify-center items-center gap-2">
+                                        <i class="fab fa-whatsapp text-lg"></i> <span class="lang-fr">Commander</span><span class="lang-ar">اطلب</span>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div class="luxury-card rounded-sm overflow-hidden flex flex-col h-full group">
+                                <div class="h-56 overflow-hidden relative">
+                                    <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=600&q=80" alt="Salade Nicoise" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
+                                </div>
+                                <div class="p-6 flex flex-col flex-grow">
+                                    <h4 class="font-serif text-xl text-gold font-bold text-center mb-5"><span class="lang-fr">Salade Nicoise</span><span class="lang-ar">سلطة نيسواز</span></h4>
+                                    <a href="https://wa.me/212764948386?text=Bonjour,%20je%20voudrais%20commander%20une%20Salade%20Nicoise" target="_blank" class="btn-gold w-full py-3 text-center text-sm font-bold tracking-wider mt-auto rounded-sm flex justify-center items-center gap-2">
+                                        <i class="fab fa-whatsapp text-lg"></i> <span class="lang-fr">Commander</span><span class="lang-ar">اطلب</span>
+                                    </a>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <!-- Category: Suppléments -->
+                    <div class="mb-8">
+                        <h3 class="text-3xl font-serif text-gold mb-8 border-b border-gold/20 pb-3">Suppléments</h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+                            
+                            <div class="luxury-card rounded-sm overflow-hidden flex flex-col h-full group">
+                                <div class="h-56 overflow-hidden relative">
+                                    <img src="https://images.unsplash.com/photo-1576107232684-1279f390859f?auto=format&fit=crop&w=600&q=80" alt="Portion Frite" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
+                                </div>
+                                <div class="p-6 flex flex-col flex-grow">
+                                    <h4 class="font-serif text-xl text-gold font-bold text-center mb-5"><span class="lang-fr">Portion Frite</span><span class="lang-ar">بطاطس مقلية</span></h4>
+                                    <a href="https://wa.me/212764948386?text=Bonjour,%20je%20voudrais%20ajouter%20une%20Portion%20Frite" target="_blank" class="btn-gold w-full py-3 text-center text-sm font-bold tracking-wider mt-auto rounded-sm flex justify-center items-center gap-2">
+                                        <i class="fab fa-whatsapp text-lg"></i> <span class="lang-fr">Commander</span><span class="lang-ar">اطلب</span>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div class="luxury-card rounded-sm overflow-hidden flex flex-col h-full group">
+                                <div class="h-56 overflow-hidden relative">
+                                    <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=600&q=80" alt="Pain" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
+                                </div>
+                                <div class="p-6 flex flex-col flex-grow">
+                                    <h4 class="font-serif text-xl text-gold font-bold text-center mb-5"><span class="lang-fr">Pain</span><span class="lang-ar">خبز</span></h4>
+                                    <a href="https://wa.me/212764948386?text=Bonjour,%20je%20voudrais%20ajouter%20du%20Pain" target="_blank" class="btn-gold w-full py-3 text-center text-sm font-bold tracking-wider mt-auto rounded-sm flex justify-center items-center gap-2">
+                                        <i class="fab fa-whatsapp text-lg"></i> <span class="lang-fr">Commander</span><span class="lang-ar">اطلب</span>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div class="luxury-card rounded-sm overflow-hidden flex flex-col h-full group">
+                                <div class="h-56 overflow-hidden relative">
+                                    <img src="https://images.unsplash.com/photo-1587486913049-53fc88980cfc?auto=format&fit=crop&w=600&q=80" alt="Œuf" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
+                                </div>
+                                <div class="p-6 flex flex-col flex-grow">
+                                    <h4 class="font-serif text-xl text-gold font-bold text-center mb-5"><span class="lang-fr">Œuf</span><span class="lang-ar">بيض</span></h4>
+                                    <a href="https://wa.me/212764948386?text=Bonjour,%20je%20voudrais%20ajouter%20un%20Œuf" target="_blank" class="btn-gold w-full py-3 text-center text-sm font-bold tracking-wider mt-auto rounded-sm flex justify-center items-center gap-2">
+                                        <i class="fab fa-whatsapp text-lg"></i> <span class="lang-fr">Commander</span><span class="lang-ar">اطلب</span>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div class="luxury-card rounded-sm overflow-hidden flex flex-col h-full group">
+                                <div class="h-56 overflow-hidden relative">
+                                    <img src="https://images.unsplash.com/photo-1566385101042-1a0aa0c1268c?auto=format&fit=crop&w=600&q=80" alt="Article de Légumes" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
+                                </div>
+                                <div class="p-6 flex flex-col flex-grow">
+                                    <h4 class="font-serif text-xl text-gold font-bold text-center mb-5"><span class="lang-fr">Article de Légumes</span><span class="lang-ar">صنف خضار</span></h4>
+                                    <a href="https://wa.me/212764948386?text=Bonjour,%20je%20voudrais%20ajouter%20un%20Article%20de%20Légumes" target="_blank" class="btn-gold w-full py-3 text-center text-sm font-bold tracking-wider mt-auto rounded-sm flex justify-center items-center gap-2">
+                                        <i class="fab fa-whatsapp text-lg"></i> <span class="lang-fr">Commander</span><span class="lang-ar">اطلب</span>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div class="luxury-card rounded-sm overflow-hidden flex flex-col h-full group">
+                                <div class="h-56 overflow-hidden relative">
+                                    <img src="https://images.unsplash.com/photo-1628156108151-51000b52a1aa?auto=format&fit=crop&w=600&q=80" alt="Dinde fumée" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
+                                </div>
+                                <div class="p-6 flex flex-col flex-grow">
+                                    <h4 class="font-serif text-xl text-gold font-bold text-center mb-5"><span class="lang-fr">Dinde fumée</span><span class="lang-ar">ديك رومي مدخن</span></h4>
+                                    <a href="https://wa.me/212764948386?text=Bonjour,%20je%20voudrais%20ajouter%20de%20la%20Dinde%20fumée" target="_blank" class="btn-gold w-full py-3 text-center text-sm font-bold tracking-wider mt-auto rounded-sm flex justify-center items-center gap-2">
+                                        <i class="fab fa-whatsapp text-lg"></i> <span class="lang-fr">Commander</span><span class="lang-ar">اطلب</span>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div class="luxury-card rounded-sm overflow-hidden flex flex-col h-full group">
+                                <div class="h-56 overflow-hidden relative">
+                                    <img src="https://images.unsplash.com/photo-1486297678162-eb2a19b0a32d?auto=format&fit=crop&w=600&q=80" alt="Fromage" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
+                                </div>
+                                <div class="p-6 flex flex-col flex-grow">
+                                    <h4 class="font-serif text-xl text-gold font-bold text-center mb-5"><span class="lang-fr">Fromage</span><span class="lang-ar">جبن</span></h4>
+                                    <a href="https://wa.me/212764948386?text=Bonjour,%20je%20voudrais%20ajouter%20du%20Fromage" target="_blank" class="btn-gold w-full py-3 text-center text-sm font-bold tracking-wider mt-auto rounded-sm flex justify-center items-center gap-2">
+                                        <i class="fab fa-whatsapp text-lg"></i> <span class="lang-fr">Commander</span><span class="lang-ar">اطلب</span>
+                                    </a>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TAB 7: Jus & Boissons -->
+                <div id="tab-boissons" class="tab-content hidden">
+                    <!-- Category: Jus Frais -->
+                    <div class="mb-16">
+                        <h3 class="text-3xl font-serif text-gold mb-8 border-b border-gold/20 pb-3">Jus Frais</h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+                            
+                            <div class="luxury-card rounded-sm overflow-hidden flex flex-col h-full group">
+                                <div class="h-56 overflow-hidden relative">
+                                    <img src="https://images.unsplash.com/photo-1600271886742-f049cd451bba?auto=format&fit=crop&w=600&q=80" alt="Jus d'Orange" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
+                                </div>
+                                <div class="p-6 flex flex-col flex-grow">
+                                    <h4 class="font-serif text-xl text-gold font-bold text-center mb-5"><span class="lang-fr">Jus d'Orange</span><span class="lang-ar">عصير برتقال</span></h4>
+                                    <a href="https://wa.me/212764948386?text=Bonjour,%20je%20voudrais%20commander%20un%20Jus%20d'Orange" target="_blank" class="btn-gold w-full py-3 text-center text-sm font-bold tracking-wider mt-auto rounded-sm flex justify-center items-center gap-2">
+                                        <i class="fab fa-whatsapp text-lg"></i> <span class="lang-fr">Commander</span><span class="lang-ar">اطلب</span>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div class="luxury-card rounded-sm overflow-hidden flex flex-col h-full group">
+                                <div class="h-56 overflow-hidden relative">
+                                    <img src="https://images.unsplash.com/photo-1600271886742-f049cd451bba?auto=format&fit=crop&w=600&q=80" alt="Jus de Banane" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
+                                </div>
+                                <div class="p-6 flex flex-col flex-grow">
+                                    <h4 class="font-serif text-xl text-gold font-bold text-center mb-5"><span class="lang-fr">Jus de Banane</span><span class="lang-ar">عصير موز</span></h4>
+                                    <a href="https://wa.me/212764948386?text=Bonjour,%20je%20voudrais%20commander%20un%20Jus%20de%20Banane" target="_blank" class="btn-gold w-full py-3 text-center text-sm font-bold tracking-wider mt-auto rounded-sm flex justify-center items-center gap-2">
+                                        <i class="fab fa-whatsapp text-lg"></i> <span class="lang-fr">Commander</span><span class="lang-ar">اطلب</span>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div class="luxury-card rounded-sm overflow-hidden flex flex-col h-full group">
+                                <div class="h-56 overflow-hidden relative">
+                                    <img src="https://images.unsplash.com/photo-1600271886742-f049cd451bba?auto=format&fit=crop&w=600&q=80" alt="Jus Avocat" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
+                                </div>
+                                <div class="p-6 flex flex-col flex-grow">
+                                    <h4 class="font-serif text-xl text-gold font-bold text-center mb-5"><span class="lang-fr">Jus Avocat</span><span class="lang-ar">عصير أفوكادو</span></h4>
+                                    <a href="https://wa.me/212764948386?text=Bonjour,%20je%20voudrais%20commander%20un%20Jus%20Avocat" target="_blank" class="btn-gold w-full py-3 text-center text-sm font-bold tracking-wider mt-auto rounded-sm flex justify-center items-center gap-2">
+                                        <i class="fab fa-whatsapp text-lg"></i> <span class="lang-fr">Commander</span><span class="lang-ar">اطلب</span>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div class="luxury-card rounded-sm overflow-hidden flex flex-col h-full group">
+                                <div class="h-56 overflow-hidden relative">
+                                    <img src="https://images.unsplash.com/photo-1600271886742-f049cd451bba?auto=format&fit=crop&w=600&q=80" alt="Jus betterave" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
+                                </div>
+                                <div class="p-6 flex flex-col flex-grow">
+                                    <h4 class="font-serif text-xl text-gold font-bold text-center mb-5"><span class="lang-fr">Jus betterave</span><span class="lang-ar">عصير شمندر</span></h4>
+                                    <a href="https://wa.me/212764948386?text=Bonjour,%20je%20voudrais%20commander%20un%20Jus%20betterave" target="_blank" class="btn-gold w-full py-3 text-center text-sm font-bold tracking-wider mt-auto rounded-sm flex justify-center items-center gap-2">
+                                        <i class="fab fa-whatsapp text-lg"></i> <span class="lang-fr">Commander</span><span class="lang-ar">اطلب</span>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div class="luxury-card rounded-sm overflow-hidden flex flex-col h-full group">
+                                <div class="h-56 overflow-hidden relative">
+                                    <img src="https://images.unsplash.com/photo-1600271886742-f049cd451bba?auto=format&fit=crop&w=600&q=80" alt="Jus Panaché" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
+                                </div>
+                                <div class="p-6 flex flex-col flex-grow">
+                                    <h4 class="font-serif text-xl text-gold font-bold text-center mb-5"><span class="lang-fr">Jus Panaché</span><span class="lang-ar">عصير باناشي</span></h4>
+                                    <a href="https://wa.me/212764948386?text=Bonjour,%20je%20voudrais%20commander%20un%20Jus%20Panaché" target="_blank" class="btn-gold w-full py-3 text-center text-sm font-bold tracking-wider mt-auto rounded-sm flex justify-center items-center gap-2">
+                                        <i class="fab fa-whatsapp text-lg"></i> <span class="lang-fr">Commander</span><span class="lang-ar">اطلب</span>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div class="luxury-card rounded-sm overflow-hidden flex flex-col h-full group">
+                                <div class="h-56 overflow-hidden relative">
+                                    <img src="https://images.unsplash.com/photo-1600271886742-f049cd451bba?auto=format&fit=crop&w=600&q=80" alt="Jus citron a la menthe" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
+                                </div>
+                                <div class="p-6 flex flex-col flex-grow">
+                                    <h4 class="font-serif text-xl text-gold font-bold text-center mb-5"><span class="lang-fr">Jus citron a la menthe</span><span class="lang-ar">عصير ليمون بالنعناع</span></h4>
+                                    <a href="https://wa.me/212764948386?text=Bonjour,%20je%20voudrais%20commander%20un%20Jus%20citron%20a%20la%20menthe" target="_blank" class="btn-gold w-full py-3 text-center text-sm font-bold tracking-wider mt-auto rounded-sm flex justify-center items-center gap-2">
+                                        <i class="fab fa-whatsapp text-lg"></i> <span class="lang-fr">Commander</span><span class="lang-ar">اطلب</span>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div class="luxury-card rounded-sm overflow-hidden flex flex-col h-full group">
+                                <div class="h-56 overflow-hidden relative">
+                                    <img src="https://images.unsplash.com/photo-1600271886742-f049cd451bba?auto=format&fit=crop&w=600&q=80" alt="Jus de Pomme" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
+                                </div>
+                                <div class="p-6 flex flex-col flex-grow">
+                                    <h4 class="font-serif text-xl text-gold font-bold text-center mb-5"><span class="lang-fr">Jus de Pomme</span><span class="lang-ar">عصير تفاح</span></h4>
+                                    <a href="https://wa.me/212764948386?text=Bonjour,%20je%20voudrais%20commander%20un%20Jus%20de%20Pomme" target="_blank" class="btn-gold w-full py-3 text-center text-sm font-bold tracking-wider mt-auto rounded-sm flex justify-center items-center gap-2">
+                                        <i class="fab fa-whatsapp text-lg"></i> <span class="lang-fr">Commander</span><span class="lang-ar">اطلب</span>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div class="luxury-card rounded-sm overflow-hidden flex flex-col h-full group">
+                                <div class="h-56 overflow-hidden relative">
+                                    <img src="https://images.unsplash.com/photo-1600271886742-f049cd451bba?auto=format&fit=crop&w=600&q=80" alt="Jus Galleria" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
+                                </div>
+                                <div class="p-6 flex flex-col flex-grow">
+                                    <h4 class="font-serif text-xl text-gold font-bold text-center mb-5"><span class="lang-fr">Jus Galleria</span><span class="lang-ar">عصير غاليريا</span></h4>
+                                    <a href="https://wa.me/212764948386?text=Bonjour,%20je%20voudrais%20commander%20un%20Jus%20Galleria" target="_blank" class="btn-gold w-full py-3 text-center text-sm font-bold tracking-wider mt-auto rounded-sm flex justify-center items-center gap-2">
+                                        <i class="fab fa-whatsapp text-lg"></i> <span class="lang-fr">Commander</span><span class="lang-ar">اطلب</span>
+                                    </a>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <!-- Category: Boissons -->
+                    <div class="mb-8">
+                        <h3 class="text-3xl font-serif text-gold mb-8 border-b border-gold/20 pb-3">Boissons</h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+                            
+                            <div class="luxury-card rounded-sm overflow-hidden flex flex-col h-full group">
+                                <div class="h-56 overflow-hidden relative">
+                                    <img src="https://images.unsplash.com/photo-1622483767028-3f66f32aef97?auto=format&fit=crop&w=600&q=80" alt="Soda" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
+                                </div>
+                                <div class="p-6 flex flex-col flex-grow">
+                                    <h4 class="font-serif text-xl text-gold font-bold text-center mb-5"><span class="lang-fr">Soda</span><span class="lang-ar">مشروبات غازية</span></h4>
+                                    <a href="https://wa.me/212764948386?text=Bonjour,%20je%20voudrais%20commander%20un%20Soda" target="_blank" class="btn-gold w-full py-3 text-center text-sm font-bold tracking-wider mt-auto rounded-sm flex justify-center items-center gap-2">
+                                        <i class="fab fa-whatsapp text-lg"></i> <span class="lang-fr">Commander</span><span class="lang-ar">اطلب</span>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div class="luxury-card rounded-sm overflow-hidden flex flex-col h-full group">
+                                <div class="h-56 overflow-hidden relative">
+                                    <img src="https://images.unsplash.com/photo-1548839140-29a749e1bc4e?auto=format&fit=crop&w=600&q=80" alt="Eau minérale" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
+                                </div>
+                                <div class="p-6 flex flex-col flex-grow">
+                                    <h4 class="font-serif text-xl text-gold font-bold text-center mb-5"><span class="lang-fr">Eau minérale</span><span class="lang-ar">مياه معدنية</span></h4>
+                                    <a href="https://wa.me/212764948386?text=Bonjour,%20je%20voudrais%20commander%20de%20l'Eau%20minérale" target="_blank" class="btn-gold w-full py-3 text-center text-sm font-bold tracking-wider mt-auto rounded-sm flex justify-center items-center gap-2">
+                                        <i class="fab fa-whatsapp text-lg"></i> <span class="lang-fr">Commander</span><span class="lang-ar">اطلب</span>
+                                    </a>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TAB 8: Desserts -->
+                <div id="tab-desserts" class="tab-content hidden">
+                    <!-- Category: Desserts -->
+                    <div class="mb-16">
+                        <h3 class="text-3xl font-serif text-gold mb-8 border-b border-gold/20 pb-3">Desserts</h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+                            
+                            <div class="luxury-card rounded-sm overflow-hidden flex flex-col h-full group">
+                                <div class="h-56 overflow-hidden relative">
+                                    <img src="https://images.unsplash.com/photo-1571115177098-24c42d640a92?auto=format&fit=crop&w=600&q=80" alt="Mouhalabieh" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
+                                </div>
+                                <div class="p-6 flex flex-col flex-grow">
+                                    <h4 class="font-serif text-xl text-gold font-bold text-center mb-5"><span class="lang-fr">Mouhalabieh</span><span class="lang-ar">مهلبية</span></h4>
+                                    <a href="https://wa.me/212764948386?text=Bonjour,%20je%20voudrais%20commander%20une%20Mouhalabieh" target="_blank" class="btn-gold w-full py-3 text-center text-sm font-bold tracking-wider mt-auto rounded-sm flex justify-center items-center gap-2">
+                                        <i class="fab fa-whatsapp text-lg"></i> <span class="lang-fr">Commander</span><span class="lang-ar">اطلب</span>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div class="luxury-card rounded-sm overflow-hidden flex flex-col h-full group">
+                                <div class="h-56 overflow-hidden relative">
+                                    <img src="https://images.unsplash.com/photo-1473269712320-f24ce5aaaab8?auto=format&fit=crop&w=600&q=80" alt="Crème Brûlée" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
+                                </div>
+                                <div class="p-6 flex flex-col flex-grow">
+                                    <h4 class="font-serif text-xl text-gold font-bold text-center mb-5"><span class="lang-fr">Crème Brûlée</span><span class="lang-ar">كريم بروليه</span></h4>
+                                    <a href="https://wa.me/212764948386?text=Bonjour,%20je%20voudrais%20commander%20une%20Crème%20Brûlée" target="_blank" class="btn-gold w-full py-3 text-center text-sm font-bold tracking-wider mt-auto rounded-sm flex justify-center items-center gap-2">
+                                        <i class="fab fa-whatsapp text-lg"></i> <span class="lang-fr">Commander</span><span class="lang-ar">اطلب</span>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div class="luxury-card rounded-sm overflow-hidden flex flex-col h-full group">
+                                <div class="h-56 overflow-hidden relative">
+                                    <img src="https://images.unsplash.com/photo-1534353875273-b5887cc1abf5?auto=format&fit=crop&w=600&q=80" alt="Flan au Caramel" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
+                                </div>
+                                <div class="p-6 flex flex-col flex-grow">
+                                    <h4 class="font-serif text-xl text-gold font-bold text-center mb-5"><span class="lang-fr">Flan au Caramel</span><span class="lang-ar">فلان كراميل</span></h4>
+                                    <a href="https://wa.me/212764948386?text=Bonjour,%20je%20voudrais%20commander%20un%20Flan%20au%20Caramel" target="_blank" class="btn-gold w-full py-3 text-center text-sm font-bold tracking-wider mt-auto rounded-sm flex justify-center items-center gap-2">
+                                        <i class="fab fa-whatsapp text-lg"></i> <span class="lang-fr">Commander</span><span class="lang-ar">اطلب</span>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div class="luxury-card rounded-sm overflow-hidden flex flex-col h-full group">
+                                <div class="h-56 overflow-hidden relative">
+                                    <img src="https://images.unsplash.com/photo-1571115177098-24c42d640a92?auto=format&fit=crop&w=600&q=80" alt="Tiramisu" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
+                                </div>
+                                <div class="p-6 flex flex-col flex-grow">
+                                    <h4 class="font-serif text-xl text-gold font-bold text-center mb-5"><span class="lang-fr">Tiramisu</span><span class="lang-ar">تيراميسو</span></h4>
+                                    <a href="https://wa.me/212764948386?text=Bonjour,%20je%20voudrais%20commander%20un%20Tiramisu" target="_blank" class="btn-gold w-full py-3 text-center text-sm font-bold tracking-wider mt-auto rounded-sm flex justify-center items-center gap-2">
+                                        <i class="fab fa-whatsapp text-lg"></i> <span class="lang-fr">Commander</span><span class="lang-ar">اطلب</span>
+                                    </a>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
             </div>
             
-            <div class="mt-12 text-center">
+            <div class="mt-8 text-center">
+                <p class="text-sm text-light/50 italic mb-4">
+                    <span class="lang-fr">* Demandez les prix détaillés directement sur WhatsApp</span>
+                    <span class="lang-ar">* اطلب الأسعار بالتفصيل مباشرة على الواتساب</span>
+                </p>
                 <a href="https://wa.me/212764948386" target="_blank" class="text-gold hover:text-primary transition-colors inline-flex items-center gap-2 text-sm uppercase tracking-widest border-b border-gold hover:border-primary pb-1">
                     <span class="lang-fr">Demander le menu complet sur WhatsApp</span>
                     <span class="lang-ar">اطلب القائمة الكاملة على الواتساب</span>
@@ -919,7 +1835,10 @@
                     b.classList.remove('active', 'text-gold', 'border-bottom');
                     b.classList.add('text-light/60');
                 });
-                tabContents.forEach(c => c.classList.add('hidden'));
+                tabContents.forEach(c => {
+                    c.classList.add('hidden');
+                    c.classList.remove('block');
+                });
 
                 // Add active to clicked
                 btn.classList.add('active');
@@ -927,12 +1846,14 @@
                 
                 // Show target content
                 const targetId = btn.getAttribute('data-target');
-                document.getElementById(targetId).classList.remove('hidden');
+                const targetContent = document.getElementById(targetId);
+                targetContent.classList.remove('hidden');
+                targetContent.classList.add('block');
                 
                 // Re-trigger fade-in animation for contents
-                document.getElementById(targetId).classList.remove('visible');
+                targetContent.classList.remove('visible');
                 setTimeout(() => {
-                     document.getElementById(targetId).classList.add('visible');
+                     targetContent.classList.add('visible');
                 }, 50);
             });
         });
