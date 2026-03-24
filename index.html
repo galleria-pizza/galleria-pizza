@@ -109,15 +109,24 @@
         .gallery-frame { border: 2px solid #E8C98A; width: 80%; height: 80%; position: absolute; transform: scale(1.2); transition: transform 0.4s ease; }
         .gallery-item:hover .gallery-frame { transform: scale(1); }
 
-        .float-btn { position: fixed; right: 30px; border-radius: 50%; text-align: center; box-shadow: 0 0 20px rgba(0, 0, 0, 0.5); z-index: 80; display: flex; align-items: center; justify-content: center; width: 65px; height: 65px; text-decoration: none; transition: transform 0.3s ease, bottom 0.4s ease; cursor: pointer; }
+        .float-btn { position: fixed; border-radius: 50%; text-align: center; box-shadow: 0 0 20px rgba(0, 0, 0, 0.5); z-index: 80; display: flex; align-items: center; justify-content: center; width: 65px; height: 65px; text-decoration: none; transition: transform 0.3s ease, bottom 0.4s ease, opacity 0.3s ease; cursor: pointer; }
         .float-btn:hover { transform: scale(1.1); }
-        html[lang="ar"] .float-btn { left: 30px; right: auto; }
+        
+        /* Positioning for WA and Cart */
+        .wa-float, .cart-float { right: 30px; }
+        html[lang="ar"] .wa-float, html[lang="ar"] .cart-float { left: 30px; right: auto; }
+        
         .wa-float { bottom: 30px; background-color: transparent; border: 2px solid transparent; }
         .wa-float:hover { border-color: white; }
         .wa-float img { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; }
         .cart-float { bottom: 110px; background-color: #8B0000; color: #E8C98A; border: 2px solid #E8C98A; }
         .cart-badge { position: absolute; top: -5px; right: -5px; background-color: #E8C98A; color: #120606; border-radius: 50%; width: 24px; height: 24px; font-size: 12px; font-weight: bold; display: flex; justify-content: center; align-items: center; }
         html[lang="ar"] .cart-badge { right: auto; left: -5px; }
+
+        /* Back to Top Button */
+        .back-to-top-float { left: 30px; bottom: 30px; background-color: #1a0a0a; color: #E8C98A; border: 1px solid #E8C98A; opacity: 0; pointer-events: none; transform: translateY(20px); z-index: 70; }
+        .back-to-top-float.show { opacity: 1; pointer-events: auto; transform: translateY(0); }
+        html[lang="ar"] .back-to-top-float { right: 30px; left: auto; }
 
         #cart-sidebar { box-shadow: -10px 0 30px rgba(0,0,0,0.5); }
         html[lang="ar"] #cart-sidebar { box-shadow: 10px 0 30px rgba(0,0,0,0.5); }
@@ -152,6 +161,9 @@
 
         /* Search Input */
         .search-input-container input:focus + i { color: #E8C98A; }
+
+        /* PWA Instructions Modal */
+        #pwa-modal { transition: opacity 0.3s ease, visibility 0.3s ease; }
     </style>
 </head>
 <body class="font-sans text-light antialiased pb-0 transition-all duration-300" id="main-body">
@@ -165,16 +177,48 @@
     </div>
 
     <!-- PWA Install Banner -->
-    <div id="pwa-install-banner" class="hidden fixed top-24 left-1/2 transform -translate-x-1/2 bg-dark/95 backdrop-blur-md border border-gold/50 text-light px-5 py-3 rounded-full z-50 shadow-[0_10px_30px_rgba(232,201,138,0.2)] items-center gap-4 w-[90%] max-w-sm">
+    <div id="pwa-install-banner" class="hidden fixed top-24 left-1/2 transform -translate-x-1/2 bg-dark/95 backdrop-blur-md border border-gold/50 text-light px-5 py-3 rounded-full z-50 shadow-[0_10px_30px_rgba(232,201,138,0.2)] items-center gap-4 w-[90%] max-w-sm transition-all duration-500 translate-y-[-20px] opacity-0">
         <img src="https://4webwall.com/wp-content/uploads/2026/03/Galleria-pizza-Logo1.jpg" class="w-10 h-10 rounded-full border border-gold" alt="Logo">
         <div class="flex-grow">
             <div class="text-sm font-bold text-gold">Galleria Pizza</div>
             <div class="text-xs text-light/70"><span class="lang-fr">Installer l'application</span><span class="lang-ar">تثبيت التطبيق</span></div>
         </div>
-        <button id="pwa-install-btn" class="bg-gold text-dark px-4 py-1.5 rounded-full text-xs font-bold hover:bg-white transition-colors">
+        <button onclick="showPwaModal()" class="bg-gold text-dark px-4 py-1.5 rounded-full text-xs font-bold hover:bg-white transition-colors">
             <i class="fas fa-download mr-1"></i> <span class="lang-fr">Installer</span><span class="lang-ar">تثبيت</span>
         </button>
-        <button onclick="document.getElementById('pwa-install-banner').classList.add('hidden')" class="text-light/50 hover:text-white"><i class="fas fa-times"></i></button>
+        <button onclick="hidePwaBanner()" class="text-light/50 hover:text-white"><i class="fas fa-times"></i></button>
+    </div>
+
+    <!-- PWA Instructions Modal -->
+    <div id="pwa-modal" class="fixed inset-0 bg-black/80 z-[100] hidden items-center justify-center backdrop-blur-sm opacity-0 invisible">
+        <div class="bg-dark border border-gold/30 p-6 rounded-xl max-w-sm w-[90%] shadow-2xl relative transform scale-95 transition-transform duration-300" id="pwa-modal-content">
+            <button onclick="hidePwaModal()" class="absolute top-4 right-4 text-light/50 hover:text-gold text-xl"><i class="fas fa-times"></i></button>
+            <h3 class="text-xl font-serif text-gold mb-4 font-bold text-center border-b border-gold/20 pb-3">
+                <span class="lang-fr">Installer l'application</span>
+                <span class="lang-ar">تثبيت التطبيق</span>
+            </h3>
+            
+            <div class="space-y-4 mb-6">
+                <div class="bg-white/5 p-3 rounded-lg border border-white/10">
+                    <div class="font-bold text-white mb-2 flex items-center gap-2"><i class="fab fa-apple text-xl"></i> iPhone (Safari)</div>
+                    <p class="text-sm text-light/80">
+                        <span class="lang-fr">1. Appuyez sur l'icône Partager <i class="fas fa-external-link-alt text-gold mx-1"></i> en bas.<br>2. Sélectionnez <strong>"Sur l'écran d'accueil"</strong> <i class="fas fa-plus-square text-gold mx-1"></i>.</span>
+                        <span class="lang-ar">1. اضغط على أيقونة المشاركة <i class="fas fa-external-link-alt text-gold mx-1"></i> أسفل الشاشة.<br>2. اختر <strong>"إضافة إلى الصفحة الرئيسية"</strong> <i class="fas fa-plus-square text-gold mx-1"></i>.</span>
+                    </p>
+                </div>
+                <div class="bg-white/5 p-3 rounded-lg border border-white/10">
+                    <div class="font-bold text-white mb-2 flex items-center gap-2"><i class="fab fa-android text-xl text-[#3DDC84]"></i> Android (Chrome)</div>
+                    <p class="text-sm text-light/80">
+                        <span class="lang-fr">1. Appuyez sur les 3 points <i class="fas fa-ellipsis-v text-gold mx-1"></i> en haut.<br>2. Sélectionnez <strong>"Ajouter à l'écran d'accueil"</strong>.</span>
+                        <span class="lang-ar">1. اضغط على الثلاث نقاط <i class="fas fa-ellipsis-v text-gold mx-1"></i> أعلى الشاشة.<br>2. اختر <strong>"إضافة إلى الشاشة الرئيسية"</strong>.</span>
+                    </p>
+                </div>
+            </div>
+            <button onclick="hidePwaModal()" class="btn-gold w-full py-2 rounded-full font-bold">
+                <span class="lang-fr">J'ai compris</span>
+                <span class="lang-ar">حسناً، فهمت</span>
+            </button>
+        </div>
     </div>
 
     <!-- Toast Notification -->
@@ -252,12 +296,12 @@
     <!-- Page 1: Hero Section (Cinematic Video Background) -->
     <section id="home" class="relative h-screen flex flex-col items-center justify-center text-center bg-dark overflow-hidden">
         <!-- Cinematic Video Fallback/Background -->
-        <video autoplay loop muted playsinline class="video-bg">
-            <!-- Using a high quality free pizza making b-roll -->
-            <source src="https://cdn.pixabay.com/video/2020/04/10/36021-410886551_large.mp4" type="video/mp4">
+        <video autoplay loop muted playsinline poster="https://images.unsplash.com/photo-1513104890138-7c749659a591?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80" class="absolute top-0 left-0 w-full h-full object-cover z-0 opacity-50">
+            <!-- Using a highly reliable CDN video link for pizza making -->
+            <source src="https://cdn.coverr.co/videos/coverr-pizza-in-the-oven-4886/1080p.mp4" type="video/mp4">
         </video>
         <!-- Dark Gradient Overlay -->
-        <div class="absolute inset-0 bg-gradient-to-b from-[#120606]/80 via-[#120606]/60 to-[#120606] z-0"></div>
+        <div class="absolute inset-0 bg-gradient-to-b from-[#120606]/80 via-[#120606]/50 to-[#120606] z-0 pointer-events-none"></div>
         
         <canvas id="particles-canvas"></canvas>
         
@@ -2058,6 +2102,11 @@
         </div>
     </footer>
 
+    <!-- Back to Top Button -->
+    <button id="back-to-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" class="float-btn back-to-top-float" title="Retour en haut / العودة للأعلى">
+        <i class="fas fa-chevron-up text-2xl"></i>
+    </button>
+
     <!-- Floating Buttons -->
     <a href="https://wa.me/212764948386" target="_blank" id="wa-btn" class="float-btn wa-float" title="Commander via WhatsApp">
         <img src="https://4webwall.com/wp-content/uploads/2026/03/Galleria-pizza-WhatsApp-icon.jpg" alt="WhatsApp" loading="lazy">
@@ -2119,68 +2168,67 @@
 
     <!-- Scripts -->
     <script>
-        // --- PWA Setup (Dynamic Manifest) ---
-        (function setupPWA() {
-            try {
-                const manifest = {
-                    "name": "Galleria Pizza and More",
-                    "short_name": "Galleria Pizza",
-                    "description": "Pizza italienne authentique, Burgers, Tacos, Pastichio et plus.",
-                    "start_url": "/",
-                    "display": "standalone",
-                    "background_color": "#120606",
-                    "theme_color": "#120606",
-                    "icons": [{
-                        "src": "https://4webwall.com/wp-content/uploads/2026/03/Galleria-pizza-Logo1.jpg",
-                        "sizes": "512x512",
-                        "type": "image/jpeg",
-                        "purpose": "any maskable"
-                    }]
-                };
-                const manifestBlob = new Blob([JSON.stringify(manifest)], {type: 'application/json'});
-                const manifestURL = URL.createObjectURL(manifestBlob);
-                document.head.insertAdjacentHTML('beforeend', `<link rel="manifest" href="${manifestURL}">`);
-
-                // Service Worker registration using blob: protocol is not supported by modern browsers for security.
-                // In a real production environment, you would create a separate "sw.js" file.
-                // We removed the blob-based Service Worker registration to fix the TypeError.
-
-                let deferredPrompt;
-                window.addEventListener('beforeinstallprompt', (e) => {
-                    e.preventDefault();
-                    deferredPrompt = e;
-                    const banner = document.getElementById('pwa-install-banner');
-                    if (banner) {
-                        banner.classList.remove('hidden');
-                        banner.classList.add('flex');
-                    }
-                });
-
-                const installBtn = document.getElementById('pwa-install-btn');
-                if (installBtn) {
-                    installBtn.addEventListener('click', async () => {
-                        if (deferredPrompt) {
-                            deferredPrompt.prompt();
-                            const { outcome } = await deferredPrompt.userChoice;
-                            if (outcome === 'accepted') {
-                                const banner = document.getElementById('pwa-install-banner');
-                                if (banner) banner.classList.add('hidden');
-                            }
-                            deferredPrompt = null;
-                        }
-                    });
-                }
-            } catch (error) {
-                console.warn("PWA setup encountered an issue:", error);
+        // --- PWA Custom Manual Prompt ---
+        function showPwaBanner() {
+            const banner = document.getElementById('pwa-install-banner');
+            // لا تظهر الرسالة إذا كان التطبيق مثبتاً بالفعل
+            if (window.matchMedia('(display-mode: standalone)').matches || navigator.standalone) {
+                return; 
             }
-        })();
+            // إظهار الرسالة إذا لم يقم الزبون بإغلاقها مسبقاً
+            if (!sessionStorage.getItem('pwaBannerClosed')) {
+                banner.classList.remove('hidden');
+                banner.classList.add('flex');
+                setTimeout(() => {
+                    banner.classList.remove('translate-y-[-20px]', 'opacity-0');
+                }, 100);
+            }
+        }
 
-        // --- Loader ---
+        function hidePwaBanner() {
+            const banner = document.getElementById('pwa-install-banner');
+            banner.classList.add('translate-y-[-20px]', 'opacity-0');
+            setTimeout(() => {
+                banner.classList.add('hidden');
+                banner.classList.remove('flex');
+            }, 300);
+            sessionStorage.setItem('pwaBannerClosed', 'true');
+        }
+
+        function showPwaModal() {
+            hidePwaBanner();
+            const modal = document.getElementById('pwa-modal');
+            const content = document.getElementById('pwa-modal-content');
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+            setTimeout(() => {
+                modal.classList.remove('opacity-0', 'invisible');
+                content.classList.remove('scale-95');
+                content.classList.add('scale-100');
+            }, 50);
+        }
+
+        function hidePwaModal() {
+            const modal = document.getElementById('pwa-modal');
+            const content = document.getElementById('pwa-modal-content');
+            modal.classList.add('opacity-0', 'invisible');
+            content.classList.remove('scale-100');
+            content.classList.add('scale-95');
+            setTimeout(() => {
+                modal.classList.add('hidden');
+                modal.classList.remove('flex');
+            }, 300);
+        }
+
+        // --- Loader & PWA Trigger ---
         window.addEventListener('load', () => {
             const loader = document.getElementById('loader');
             setTimeout(() => {
                 loader.style.opacity = '0';
                 loader.style.visibility = 'hidden';
+                
+                // إظهار رسالة التثبيت بعد 5 ثوانٍ من دخول الموقع
+                setTimeout(showPwaBanner, 5000);
             }, 500);
         });
 
@@ -2428,11 +2476,20 @@
 
         // --- Sticky Navbar & Scroll Effects ---
         const navbar = document.getElementById('navbar');
+        const backToTopBtn = document.getElementById('back-to-top');
+        
         window.addEventListener('scroll', () => {
             if (window.scrollY > 50) {
                 navbar.classList.add('nav-scrolled');
             } else {
                 navbar.classList.remove('nav-scrolled');
+            }
+            
+            // Back to top visibility
+            if (window.scrollY > 400) {
+                backToTopBtn.classList.add('show');
+            } else {
+                backToTopBtn.classList.remove('show');
             }
         });
 
