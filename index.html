@@ -107,6 +107,13 @@
         .luxury-card { background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(232, 201, 138, 0.1); transition: all 0.4s ease; }
         .luxury-card:hover { border-color: #E8C98A; transform: translateY(-3px); box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4); }
 
+        /* Badges */
+        .item-badge { position: absolute; top: 12px; left: 12px; z-index: 10; font-size: 0.7rem; font-weight: bold; padding: 4px 10px; border-radius: 4px; box-shadow: 0 4px 10px rgba(0,0,0,0.5); display: flex; align-items: center; gap: 4px; }
+        html[lang="ar"] .item-badge { left: auto; right: 12px; }
+        .badge-bestseller { background: linear-gradient(135deg, #E8C98A, #bfa054); color: #120606; border: 1px solid #fff; }
+        .badge-spicy { background: linear-gradient(135deg, #8B0000, #ff4757); color: #fff; border: 1px solid rgba(255,255,255,0.3); }
+        .badge-veg { background: linear-gradient(135deg, #2ed573, #1e90ff); color: #fff; border: 1px solid rgba(255,255,255,0.3); }
+
         .gallery-item { position: relative; overflow: hidden; cursor: pointer; }
         .gallery-overlay { position: absolute; inset: 0; background: rgba(18, 6, 6, 0.8); opacity: 0; transition: all 0.4s ease; display: flex; justify-content: center; align-items: center; }
         .gallery-item:hover .gallery-overlay { opacity: 1; }
@@ -166,8 +173,17 @@
         /* Search Input */
         .search-input-container input:focus + i { color: #E8C98A; }
 
-        /* PWA Instructions Modal */
-        #pwa-modal { transition: opacity 0.3s ease, visibility 0.3s ease; }
+        /* Promo Marquee */
+        .marquee-container { overflow: hidden; white-space: nowrap; width: 100%; background-color: #8B0000; color: #E8C98A; height: 32px; display: flex; align-items: center; position: fixed; top: 0; left: 0; z-index: 50; transition: transform 0.3s ease; font-size: 0.8rem; font-weight: bold; border-bottom: 1px solid rgba(232, 201, 138, 0.3); }
+        .marquee-content { display: inline-block; animation: marquee 25s linear infinite; }
+        .marquee-content:hover { animation-play-state: paused; }
+        @keyframes marquee { 0% { transform: translateX(100vw); } 100% { transform: translateX(-100%); } }
+        html[lang="ar"] .marquee-content { animation: marquee-ar 25s linear infinite; }
+        html[lang="ar"] .marquee-content:hover { animation-play-state: paused; }
+        @keyframes marquee-ar { 0% { transform: translateX(-100vw); } 100% { transform: translateX(100%); } }
+
+        /* Modals */
+        .modal-overlay { transition: opacity 0.3s ease, visibility 0.3s ease; }
     </style>
 </head>
 <body class="font-sans text-light antialiased pb-0 transition-all duration-300" id="main-body">
@@ -180,47 +196,53 @@
         </div>
     </div>
 
-    <!-- PWA Install Banner -->
-    <div id="pwa-install-banner" class="hidden fixed top-24 left-1/2 transform -translate-x-1/2 bg-dark/95 backdrop-blur-md border border-gold/50 text-light px-5 py-3 rounded-full z-50 shadow-[0_10px_30px_rgba(232,201,138,0.2)] items-center gap-4 w-[90%] max-w-sm transition-all duration-500 translate-y-[-20px] opacity-0">
-        <img src="https://4webwall.com/wp-content/uploads/2026/03/Galleria-pizza-Logo1.jpg" class="w-10 h-10 rounded-full border border-gold" alt="Logo">
-        <div class="flex-grow">
-            <div class="text-sm font-bold text-gold">Galleria Pizza</div>
-            <div class="text-xs text-light/70"><span class="lang-fr">Installer l'application</span><span class="lang-ar">تثبيت التطبيق</span></div>
-        </div>
-        <button onclick="showPwaModal()" class="bg-gold text-dark px-4 py-1.5 rounded-full text-xs font-bold hover:bg-white transition-colors">
-            <i class="fas fa-download mr-1"></i> <span class="lang-fr">Installer</span><span class="lang-ar">تثبيت</span>
-        </button>
-        <button onclick="hidePwaBanner()" class="text-light/50 hover:text-white"><i class="fas fa-times"></i></button>
-    </div>
-
-    <!-- PWA Instructions Modal -->
-    <div id="pwa-modal" class="fixed inset-0 bg-black/80 z-[100] hidden items-center justify-center backdrop-blur-sm opacity-0 invisible">
-        <div class="bg-dark border border-gold/30 p-6 rounded-xl max-w-sm w-[90%] shadow-2xl relative transform scale-95 transition-transform duration-300" id="pwa-modal-content">
-            <button onclick="hidePwaModal()" class="absolute top-4 right-4 text-light/50 hover:text-gold text-xl"><i class="fas fa-times"></i></button>
-            <h3 class="text-xl font-serif text-gold mb-4 font-bold text-center border-b border-gold/20 pb-3">
-                <span class="lang-fr">Installer l'application</span>
-                <span class="lang-ar">تثبيت التطبيق</span>
-            </h3>
-            
-            <div class="space-y-4 mb-6">
-                <div class="bg-white/5 p-3 rounded-lg border border-white/10">
-                    <div class="font-bold text-white mb-2 flex items-center gap-2"><i class="fab fa-apple text-xl"></i> iPhone (Safari)</div>
-                    <p class="text-sm text-light/80">
-                        <span class="lang-fr">1. Appuyez sur l'icône Partager <i class="fas fa-external-link-alt text-gold mx-1"></i> en bas.<br>2. Sélectionnez <strong>"Sur l'écran d'accueil"</strong> <i class="fas fa-plus-square text-gold mx-1"></i>.</span>
-                        <span class="lang-ar">1. اضغط على أيقونة المشاركة <i class="fas fa-external-link-alt text-gold mx-1"></i> أسفل الشاشة.<br>2. اختر <strong>"إضافة إلى الصفحة الرئيسية"</strong> <i class="fas fa-plus-square text-gold mx-1"></i>.</span>
-                    </p>
+    <!-- Upsell / Cross-sell Modal (Smart Feature) -->
+    <div id="upsell-modal" class="fixed inset-0 bg-black/80 z-[105] hidden items-center justify-center backdrop-blur-sm opacity-0 invisible modal-overlay">
+        <div class="bg-dark border border-gold/50 p-6 rounded-xl max-w-md w-[90%] shadow-[0_10px_40px_rgba(232,201,138,0.2)] relative transform scale-95 transition-transform duration-300" id="upsell-modal-content">
+            <div class="text-center mb-6">
+                <div class="w-16 h-16 bg-gold/10 rounded-full flex items-center justify-center mx-auto mb-3 text-gold text-3xl">
+                    <i class="fas fa-glass-cheers"></i>
                 </div>
-                <div class="bg-white/5 p-3 rounded-lg border border-white/10">
-                    <div class="font-bold text-white mb-2 flex items-center gap-2"><i class="fab fa-android text-xl text-[#3DDC84]"></i> Android (Chrome)</div>
-                    <p class="text-sm text-light/80">
-                        <span class="lang-fr">1. Appuyez sur les 3 points <i class="fas fa-ellipsis-v text-gold mx-1"></i> en haut.<br>2. Sélectionnez <strong>"Ajouter à l'écran d'accueil"</strong>.</span>
-                        <span class="lang-ar">1. اضغط على الثلاث نقاط <i class="fas fa-ellipsis-v text-gold mx-1"></i> أعلى الشاشة.<br>2. اختر <strong>"إضافة إلى الشاشة الرئيسية"</strong>.</span>
-                    </p>
+                <h3 class="text-2xl font-serif text-gold font-bold">
+                    <span class="lang-fr">Attendez !</span>
+                    <span class="lang-ar">لحظة من فضلك!</span>
+                </h3>
+                <p class="text-light/80 text-sm mt-2">
+                    <span class="lang-fr">N'oubliez pas d'ajouter une boisson fraîche à votre commande.</span>
+                    <span class="lang-ar">هل نسيت إضافة مشروب بارد لطلبك؟ 🧊</span>
+                </p>
+            </div>
+            
+            <div class="space-y-3 mb-6">
+                <div class="flex justify-between items-center bg-white/5 p-3 rounded-lg border border-gold/20 hover:bg-white/10 transition">
+                    <div class="flex items-center gap-3">
+                        <i class="fas fa-cocktail text-gold text-xl"></i>
+                        <div>
+                            <div class="font-bold text-white text-sm"><span class="lang-fr">Soda Frais</span><span class="lang-ar">مشروب غازي</span></div>
+                            <div class="text-gold text-xs font-bold">10 DH</div>
+                        </div>
+                    </div>
+                    <button onclick="addToCart('Soda', 'مشروب غازي', 10); hideModal('upsell-modal'); processOrder();" class="bg-gold text-dark px-4 py-1.5 rounded-full text-xs font-bold hover:bg-white transition-colors">
+                        <span class="lang-fr">Ajouter</span><span class="lang-ar">إضافة</span>
+                    </button>
+                </div>
+                <div class="flex justify-between items-center bg-white/5 p-3 rounded-lg border border-gold/20 hover:bg-white/10 transition">
+                    <div class="flex items-center gap-3">
+                        <i class="fas fa-bottle-water text-blue-400 text-xl"></i>
+                        <div>
+                            <div class="font-bold text-white text-sm"><span class="lang-fr">Eau Minérale</span><span class="lang-ar">ماء معدني</span></div>
+                            <div class="text-gold text-xs font-bold">5 DH</div>
+                        </div>
+                    </div>
+                    <button onclick="addToCart('Eau minérale', 'مياه معدنية', 5); hideModal('upsell-modal'); processOrder();" class="bg-gold text-dark px-4 py-1.5 rounded-full text-xs font-bold hover:bg-white transition-colors">
+                        <span class="lang-fr">Ajouter</span><span class="lang-ar">إضافة</span>
+                    </button>
                 </div>
             </div>
-            <button onclick="hidePwaModal()" class="btn-gold w-full py-2 rounded-full font-bold">
-                <span class="lang-fr">J'ai compris</span>
-                <span class="lang-ar">حسناً، فهمت</span>
+            
+            <button onclick="hideModal('upsell-modal'); processOrder();" class="w-full text-light/60 hover:text-white text-sm font-bold transition-colors">
+                <span class="lang-fr">Non merci, continuer ma commande <i class="fas fa-arrow-right ml-1"></i></span>
+                <span class="lang-ar">لا شكراً، أريد إتمام الطلب <i class="fas fa-arrow-left ml-1"></i></span>
             </button>
         </div>
     </div>
@@ -231,8 +253,16 @@
         <span id="toast-msg">Ajouté au panier</span>
     </div>
 
+    <!-- Promo Announcement Bar -->
+    <div id="promo-bar" class="marquee-container">
+        <div class="marquee-content tracking-wider">
+            <span class="lang-fr">🔥 OFFRE SPÉCIALE : Livraison gratuite pour les commandes de plus de 150 DH ! 🛵 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 🎁 Achetez 2 pizzas et obtenez un soda gratuit ! 🍕🥤 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ⏰ Ouvert tous les jours de 12h00 à 00h00</span>
+            <span class="lang-ar">🔥 عرض خاص: توصيل مجاني للطلبات فوق 150 درهم! 🛵 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 🎁 اشتري 2 بيتزا واحصل على مشروب غازي مجاناً! 🍕🥤 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ⏰ مفتوح يومياً من 12 زوالاً إلى 12 ليلاً</span>
+        </div>
+    </div>
+
     <!-- Navigation -->
-    <nav id="navbar" class="fixed w-full z-40 transition-all duration-300 py-4 px-6 md:px-12 flex justify-between items-center">
+    <nav id="navbar" class="fixed top-8 w-full z-40 transition-all duration-300 py-4 px-6 md:px-12 flex justify-between items-center">
         <!-- Logo -->
         <a href="#" class="text-2xl font-serif text-gold font-bold tracking-wider z-50 relative">
             <span class="flex items-center gap-3">
@@ -241,16 +271,21 @@
             </span>
         </a>
 
-        <!-- Desktop Menu -->
+        <!-- Desktop Menu & Store Status -->
         <div class="hidden md:flex items-center space-x-8">
             <ul class="flex space-x-8 text-sm font-medium tracking-wide" id="nav-links-desktop">
                 <li><a href="#home" class="hover:text-gold transition-colors"><span class="lang-fr">Accueil</span><span class="lang-ar">الرئيسية</span></a></li>
-                <li><a href="#about" class="hover:text-gold transition-colors"><span class="lang-fr">À Propos</span><span class="lang-ar">من نحن</span></a></li>
                 <li><a href="#menu" class="hover:text-gold transition-colors"><span class="lang-fr">Menu</span><span class="lang-ar">القائمة</span></a></li>
-                <li><a href="#gallery" class="hover:text-gold transition-colors"><span class="lang-fr">Galerie</span><span class="lang-ar">معرض الصور</span></a></li>
+                <li><a href="#gallery" class="hover:text-gold transition-colors"><span class="lang-fr">Galerie</span><span class="lang-ar">الصور</span></a></li>
                 <li><a href="#reviews" class="hover:text-gold transition-colors"><span class="lang-fr">Avis</span><span class="lang-ar">الآراء</span></a></li>
-                <li><a href="#contact" class="hover:text-gold transition-colors"><span class="lang-fr">Contact</span><span class="lang-ar">اتصل بنا</span></a></li>
             </ul>
+            
+            <!-- Live Open/Closed Status -->
+            <div id="store-status" class="flex items-center gap-2 text-xs font-bold px-3 py-1 rounded-full border border-green-500 text-green-500 bg-green-500/10">
+                <div class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></div>
+                <span class="lang-fr status-text">Ouvert</span>
+                <span class="lang-ar status-text">مفتوح الآن</span>
+            </div>
             
             <!-- Language Toggle -->
             <div class="flex items-center border border-gold/30 rounded-full px-1 py-1">
@@ -262,7 +297,7 @@
                 <i class="fas fa-shopping-cart text-lg"></i>
                 <span class="lang-fr">Panier</span>
                 <span class="lang-ar">السلة</span>
-                <span id="nav-cart-count" class="absolute -top-2 -right-2 bg-gold text-dark w-5 h-5 rounded-full flex items-center justify-center text-xs">0</span>
+                <span id="nav-cart-count" class="absolute -top-2 -right-2 bg-gold text-dark w-5 h-5 rounded-full flex items-center justify-center text-xs shadow-md">0</span>
             </button>
         </div>
 
@@ -449,7 +484,10 @@
                         <h3 class="text-3xl font-serif text-gold mb-8 border-b border-gold/20 pb-3">Burgers</h3>
                         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
                             
-                            <div class="menu-card-wrapper luxury-card rounded-sm overflow-hidden flex flex-col h-full group">
+                            <div class="menu-card-wrapper luxury-card rounded-sm overflow-hidden flex flex-col h-full group relative">
+                                <div class="item-badge badge-bestseller">
+                                    <i class="fas fa-star"></i> <span class="lang-fr">Populaire</span><span class="lang-ar">مطلوب بكثرة</span>
+                                </div>
                                 <div class="h-56 overflow-hidden relative">
                                     <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=600&q=80" alt="Chicken Burger" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700" loading="lazy">
                                     <div class="absolute top-3 right-3 bg-dark/90 backdrop-blur-sm text-gold px-3 py-1 rounded-full text-sm font-bold border border-gold/30 shadow-lg">40 DH</div>
@@ -488,7 +526,10 @@
                                 </div>
                             </div>
 
-                            <div class="menu-card-wrapper luxury-card rounded-sm overflow-hidden flex flex-col h-full group">
+                            <div class="menu-card-wrapper luxury-card rounded-sm overflow-hidden flex flex-col h-full group relative">
+                                <div class="item-badge badge-spicy">
+                                    <i class="fas fa-pepper-hot"></i> <span class="lang-fr">Piquant</span><span class="lang-ar">حار</span>
+                                </div>
                                 <div class="h-56 overflow-hidden relative">
                                     <img src="https://images.unsplash.com/photo-1620589125156-fd5028c5e05b?auto=format&fit=crop&w=600&q=80" alt="Burger Crunchy" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700" loading="lazy">
                                     <div class="absolute top-3 right-3 bg-dark/90 backdrop-blur-sm text-gold px-3 py-1 rounded-full text-sm font-bold border border-gold/30 shadow-lg">50 DH</div>
@@ -574,7 +615,10 @@
                                 </div>
                             </div>
 
-                            <div class="menu-card-wrapper luxury-card rounded-sm overflow-hidden flex flex-col h-full group">
+                            <div class="menu-card-wrapper luxury-card rounded-sm overflow-hidden flex flex-col h-full group relative">
+                                <div class="item-badge badge-bestseller">
+                                    <i class="fas fa-star"></i> <span class="lang-fr">Chef</span><span class="lang-ar">اختيار الشيف</span>
+                                </div>
                                 <div class="h-56 overflow-hidden relative">
                                     <img src="https://images.unsplash.com/photo-1553909489-cd47cebeafa8?auto=format&fit=crop&w=600&q=80" alt="Sandwich Galleria" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700" loading="lazy">
                                     <div class="absolute top-3 right-3 bg-dark/90 backdrop-blur-sm text-gold px-3 py-1 rounded-full text-sm font-bold border border-gold/30 shadow-lg">45 DH</div>
@@ -710,7 +754,10 @@
                         <h3 class="text-3xl font-serif text-gold mb-8 border-b border-gold/20 pb-3">Shawarma</h3>
                         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
                             
-                            <div class="menu-card-wrapper luxury-card rounded-sm overflow-hidden flex flex-col h-full group">
+                            <div class="menu-card-wrapper luxury-card rounded-sm overflow-hidden flex flex-col h-full group relative">
+                                <div class="item-badge badge-bestseller">
+                                    <i class="fas fa-star"></i> <span class="lang-fr">Populaire</span><span class="lang-ar">مطلوب بكثرة</span>
+                                </div>
                                 <div class="h-56 overflow-hidden relative">
                                     <img src="https://images.unsplash.com/photo-1633321702518-7feccafb94d5?auto=format&fit=crop&w=600&q=80" alt="Shawarma Tacos" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700" loading="lazy">
                                     <div class="absolute top-3 right-3 bg-dark/90 backdrop-blur-sm text-gold px-3 py-1 rounded-full text-sm font-bold border border-gold/30 shadow-lg">40 DH</div>
@@ -736,7 +783,10 @@
                                 </div>
                             </div>
 
-                            <div class="menu-card-wrapper luxury-card rounded-sm overflow-hidden flex flex-col h-full group">
+                            <div class="menu-card-wrapper luxury-card rounded-sm overflow-hidden flex flex-col h-full group relative">
+                                <div class="item-badge badge-bestseller">
+                                    <i class="fas fa-fire"></i> <span class="lang-fr">XXL</span><span class="lang-ar">حجم عائلي</span>
+                                </div>
                                 <div class="h-56 overflow-hidden relative">
                                     <img src="https://images.unsplash.com/photo-1633321702518-7feccafb94d5?auto=format&fit=crop&w=600&q=80" alt="Shawarma Extra" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700" loading="lazy">
                                     <div class="absolute top-3 right-3 bg-dark/90 backdrop-blur-sm text-gold px-3 py-1 rounded-full text-sm font-bold border border-gold/30 shadow-lg">55 DH</div>
@@ -846,7 +896,10 @@
                         <h3 class="text-3xl font-serif text-gold mb-8 border-b border-gold/20 pb-3">Pastichio</h3>
                         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
                             
-                            <div class="menu-card-wrapper luxury-card rounded-sm overflow-hidden flex flex-col h-full group">
+                            <div class="menu-card-wrapper luxury-card rounded-sm overflow-hidden flex flex-col h-full group relative">
+                                <div class="item-badge badge-bestseller">
+                                    <i class="fas fa-star"></i> <span class="lang-fr">Populaire</span><span class="lang-ar">مطلوب بكثرة</span>
+                                </div>
                                 <div class="h-56 overflow-hidden relative">
                                     <img src="https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?auto=format&fit=crop&w=600&q=80" alt="Pastichio Poulet" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700" loading="lazy">
                                     <div class="absolute top-3 right-3 bg-dark/90 backdrop-blur-sm text-gold px-3 py-1 rounded-full text-sm font-bold border border-gold/30 shadow-lg">45 DH</div>
@@ -1034,7 +1087,10 @@
                                 </div>
                             </div>
 
-                            <div class="menu-card-wrapper luxury-card rounded-sm overflow-hidden flex flex-col h-full group">
+                            <div class="menu-card-wrapper luxury-card rounded-sm overflow-hidden flex flex-col h-full group relative">
+                                <div class="item-badge badge-spicy">
+                                    <i class="fas fa-pepper-hot"></i> <span class="lang-fr">Piquant</span><span class="lang-ar">حار</span>
+                                </div>
                                 <div class="h-56 overflow-hidden relative">
                                     <img src="https://images.unsplash.com/photo-1626082927389-6cd097cdc6ec?auto=format&fit=crop&w=600&q=80" alt="Crispy Spicy" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700" loading="lazy">
                                     <div class="absolute top-3 right-3 bg-dark/90 backdrop-blur-sm text-gold px-3 py-1 rounded-full text-sm font-bold border border-gold/30 shadow-lg">45 DH</div>
@@ -1207,7 +1263,10 @@
                         <h3 class="text-3xl font-serif text-gold mb-8 border-b border-gold/20 pb-3">Salades</h3>
                         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
                             
-                            <div class="menu-card-wrapper luxury-card rounded-sm overflow-hidden flex flex-col h-full group">
+                            <div class="menu-card-wrapper luxury-card rounded-sm overflow-hidden flex flex-col h-full group relative">
+                                <div class="item-badge badge-veg">
+                                    <i class="fas fa-leaf"></i> <span class="lang-fr">Végétarien</span><span class="lang-ar">نباتي</span>
+                                </div>
                                 <div class="h-56 overflow-hidden relative">
                                     <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=600&q=80" alt="Salade Fraîcheur" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700" loading="lazy">
                                     <div class="absolute top-3 right-3 bg-dark/90 backdrop-blur-sm text-gold px-3 py-1 rounded-full text-sm font-bold border border-gold/30 shadow-lg">20 DH</div>
@@ -1737,7 +1796,7 @@
         </div>
     </section>
 
-    <!-- NEW REVIEWS SECTION -->
+    <!-- REVIEWS SECTION -->
     <section id="reviews" class="py-24 px-4 md:px-8 max-w-[1400px] mx-auto relative border-t border-gold/10">
         <div class="text-center mb-12 fade-in-up">
             <h2 class="font-serif text-4xl md:text-5xl text-gold mb-6">
@@ -2121,13 +2180,13 @@
         <div id="float-cart-count" class="cart-badge">0</div>
     </button>
 
-    <!-- Sticky Checkout Bar (Appears when cart is not empty) -->
+    <!-- Sticky Checkout Bar -->
     <div id="sticky-checkout" class="fixed bottom-0 left-0 w-full bg-[#1a0a0a] border-t border-gold/40 z-[85] transform translate-y-full transition-transform duration-300 shadow-[0_-5px_20px_rgba(0,0,0,0.8)] flex justify-between items-center px-6 md:px-12 py-3">
         <div>
             <span class="text-[10px] md:text-xs text-gold uppercase tracking-widest block font-bold mb-0.5"><span class="lang-fr">Total Panier</span><span class="lang-ar">مجموع السلة</span></span>
             <span id="sticky-total" class="text-white font-bold text-lg md:text-xl">0 DH</span>
         </div>
-        <button onclick="toggleCart()" class="bg-gold text-dark font-bold px-6 py-2 rounded-full text-sm hover:bg-white transition-colors flex items-center gap-2 shadow-lg">
+        <button onclick="attemptCheckout()" class="bg-gold text-dark font-bold px-6 py-2 rounded-full text-sm hover:bg-white transition-colors flex items-center gap-2 shadow-lg">
             <i class="fas fa-shopping-basket"></i>
             <span class="lang-fr">Terminer</span><span class="lang-ar">إتمام الطلب</span>
         </button>
@@ -2155,6 +2214,12 @@
         </div>
         
         <div class="p-6 bg-[#1a0a0a] border-t border-gold/20">
+            <!-- Order Notes Box -->
+            <div class="mb-4">
+                <label for="order-notes" class="block text-xs text-light/70 mb-1 font-bold"><span class="lang-fr">Instructions spéciales :</span><span class="lang-ar">ملاحظات إضافية للمطعم:</span></label>
+                <textarea id="order-notes" rows="2" class="w-full bg-[#120606] border border-gold/20 text-light px-3 py-2 rounded-sm focus:outline-none focus:border-gold transition-colors font-sans text-sm resize-none" placeholder="Ex: Sans oignons, sauce algérienne... / مثال: بدون بصل..."></textarea>
+            </div>
+
             <div class="flex justify-between items-center mb-2">
                 <span class="text-light font-bold text-lg"><span class="lang-fr">Sous-Total:</span><span class="lang-ar">المجموع:</span></span>
                 <span id="cart-total" class="text-gold font-bold text-xl">0 DH</span>
@@ -2162,7 +2227,7 @@
             <p class="text-xs text-light/50 italic mb-4 text-right">
                 <span class="lang-fr">+ Livraison (10-15 DH)</span><span class="lang-ar">+ التوصيل (10-15 درهم)</span>
             </p>
-            <button onclick="sendWhatsAppOrder()" class="btn-primary w-full py-3 rounded-sm font-bold tracking-wider uppercase text-sm flex justify-center items-center gap-2">
+            <button onclick="attemptCheckout()" class="btn-primary w-full py-3 rounded-sm font-bold tracking-wider uppercase text-sm flex justify-center items-center gap-2">
                 <i class="fab fa-whatsapp text-lg"></i>
                 <span class="lang-fr">Commander via WhatsApp</span>
                 <span class="lang-ar">أرسل الطلب للواتساب</span>
@@ -2172,25 +2237,96 @@
 
     <!-- Scripts -->
     <script>
-        // --- PWA Custom Manual Prompt ---
+        // --- Live Open/Closed Status Logic ---
+        function checkStoreStatus() {
+            const statusElements = document.querySelectorAll('.status-text');
+            const dotIndicator = document.querySelector('#store-status div');
+            const statusContainer = document.getElementById('store-status');
+            
+            if(!statusContainer) return;
+
+            const currentHour = new Date().getHours();
+            // Store is open from 12:00 to 00:00 (12 to 23)
+            const isOpen = currentHour >= 12 && currentHour < 24;
+
+            if(isOpen) {
+                statusContainer.className = 'flex items-center gap-2 text-xs font-bold px-3 py-1 rounded-full border border-green-500 text-green-500 bg-green-500/10';
+                dotIndicator.className = 'w-2 h-2 rounded-full bg-green-500 animate-pulse';
+                if(statusElements.length > 1) {
+                    statusElements[0].innerText = "Ouvert";
+                    statusElements[1].innerText = "مفتوح الآن";
+                }
+            } else {
+                statusContainer.className = 'flex items-center gap-2 text-xs font-bold px-3 py-1 rounded-full border border-red-500 text-red-500 bg-red-500/10';
+                dotIndicator.className = 'w-2 h-2 rounded-full bg-red-500';
+                if(statusElements.length > 1) {
+                    statusElements[0].innerText = "Fermé";
+                    statusElements[1].innerText = "مغلق حالياً";
+                }
+            }
+        }
+
+        // --- PWA Setup (Dynamic Manifest) ---
+        (function setupPWA() {
+            try {
+                const manifest = {
+                    "name": "Galleria Pizza and More",
+                    "short_name": "Galleria Pizza",
+                    "description": "Pizza italienne authentique, Burgers, Tacos, Pastichio et plus.",
+                    "start_url": "/",
+                    "display": "standalone",
+                    "background_color": "#120606",
+                    "theme_color": "#120606",
+                    "icons": [{
+                        "src": "https://4webwall.com/wp-content/uploads/2026/03/Galleria-pizza-Logo1.jpg",
+                        "sizes": "512x512",
+                        "type": "image/jpeg",
+                        "purpose": "any maskable"
+                    }]
+                };
+                const manifestBlob = new Blob([JSON.stringify(manifest)], {type: 'application/json'});
+                const manifestURL = URL.createObjectURL(manifestBlob);
+                document.head.insertAdjacentHTML('beforeend', `<link rel="manifest" href="${manifestURL}">`);
+
+                let deferredPrompt;
+                window.addEventListener('beforeinstallprompt', (e) => {
+                    e.preventDefault();
+                    deferredPrompt = e;
+                });
+
+                const installBtn = document.getElementById('pwa-install-btn');
+                if (installBtn) {
+                    installBtn.addEventListener('click', async () => {
+                        if (deferredPrompt) {
+                            deferredPrompt.prompt();
+                            const { outcome } = await deferredPrompt.userChoice;
+                            if (outcome === 'accepted') {
+                                hidePwaBanner();
+                            }
+                            deferredPrompt = null;
+                        }
+                    });
+                }
+            } catch (error) {
+                console.warn("PWA setup issue:", error);
+            }
+        })();
+
         function showPwaBanner() {
             const banner = document.getElementById('pwa-install-banner');
-            // لا تظهر الرسالة إذا كان التطبيق مثبتاً بالفعل
-            if (window.matchMedia('(display-mode: standalone)').matches || navigator.standalone) {
-                return; 
-            }
-            // إظهار الرسالة إذا لم يقم الزبون بإغلاقها مسبقاً
+            if(!banner) return;
+            if (window.matchMedia('(display-mode: standalone)').matches || navigator.standalone) return; 
+            
             if (!sessionStorage.getItem('pwaBannerClosed')) {
                 banner.classList.remove('hidden');
                 banner.classList.add('flex');
-                setTimeout(() => {
-                    banner.classList.remove('translate-y-[-20px]', 'opacity-0');
-                }, 100);
+                setTimeout(() => banner.classList.remove('translate-y-[-20px]', 'opacity-0'), 100);
             }
         }
 
         function hidePwaBanner() {
             const banner = document.getElementById('pwa-install-banner');
+            if(!banner) return;
             banner.classList.add('translate-y-[-20px]', 'opacity-0');
             setTimeout(() => {
                 banner.classList.add('hidden');
@@ -2199,10 +2335,10 @@
             sessionStorage.setItem('pwaBannerClosed', 'true');
         }
 
-        function showPwaModal() {
-            hidePwaBanner();
-            const modal = document.getElementById('pwa-modal');
-            const content = document.getElementById('pwa-modal-content');
+        function showModal(id) {
+            const modal = document.getElementById(id);
+            const content = document.getElementById(id + '-content');
+            if(!modal || !content) return;
             modal.classList.remove('hidden');
             modal.classList.add('flex');
             setTimeout(() => {
@@ -2212,9 +2348,10 @@
             }, 50);
         }
 
-        function hidePwaModal() {
-            const modal = document.getElementById('pwa-modal');
-            const content = document.getElementById('pwa-modal-content');
+        function hideModal(id) {
+            const modal = document.getElementById(id);
+            const content = document.getElementById(id + '-content');
+            if(!modal || !content) return;
             modal.classList.add('opacity-0', 'invisible');
             content.classList.remove('scale-100');
             content.classList.add('scale-95');
@@ -2224,16 +2361,22 @@
             }, 300);
         }
 
-        // --- Loader & PWA Trigger ---
+        function showPwaModal() {
+            hidePwaBanner();
+            showModal('pwa-modal');
+        }
+
+        // --- Loader & Initializations ---
         window.addEventListener('load', () => {
             const loader = document.getElementById('loader');
-            setTimeout(() => {
-                loader.style.opacity = '0';
-                loader.style.visibility = 'hidden';
-                
-                // إظهار رسالة التثبيت بعد 5 ثوانٍ من دخول الموقع
-                setTimeout(showPwaBanner, 5000);
-            }, 500);
+            if(loader) {
+                setTimeout(() => {
+                    loader.style.opacity = '0';
+                    loader.style.visibility = 'hidden';
+                    setTimeout(showPwaBanner, 5000); 
+                    checkStoreStatus(); 
+                }, 500);
+            }
         });
 
         // --- Language Toggle Logic ---
@@ -2256,6 +2399,7 @@
                 btnFrMob.classList.remove('bg-gold', 'text-dark'); btnFrMob.classList.add('text-light');
             }
             updateCartUI();
+            checkStoreStatus();
         }
 
         // --- Live Menu Search Logic ---
@@ -2272,32 +2416,26 @@
                 searchIndicator.classList.remove('hidden');
                 allTabContents.forEach(c => { c.classList.remove('hidden'); c.classList.add('block'); });
 
-                let hasResults = false;
                 cardWrappers.forEach(wrapper => {
                     const title = wrapper.querySelector('.menu-item-title').getAttribute('data-search').toLowerCase();
                     if(title.includes(query)) {
                         wrapper.style.display = 'flex';
-                        hasResults = true;
                     } else {
                         wrapper.style.display = 'none';
                     }
                 });
 
-                // Hide empty category titles
                 allCategories.forEach(cat => {
                     const visibleCards = Array.from(cat.querySelectorAll('.menu-card-wrapper')).filter(w => w.style.display !== 'none');
                     cat.style.display = visibleCards.length > 0 ? 'block' : 'none';
                 });
-
             } else {
                 tabsContainer.classList.remove('hidden');
                 searchIndicator.classList.add('hidden');
                 
-                // Reset all cards and categories
                 cardWrappers.forEach(wrapper => wrapper.style.display = 'flex');
                 allCategories.forEach(cat => cat.style.display = 'block');
                 
-                // Reset to currently active tab
                 const activeTabBtn = document.querySelector('.tab-btn.active');
                 if(activeTabBtn) activeTabBtn.click();
             }
@@ -2320,7 +2458,6 @@
             const icon = toast.querySelector('i');
             
             document.getElementById('toast-msg').innerText = message;
-            
             if (type === 'warning') {
                 toast.classList.add('toast-warning');
                 icon.className = 'fas fa-exclamation-circle text-xl';
@@ -2328,7 +2465,6 @@
                 toast.classList.remove('toast-warning');
                 icon.className = 'fas fa-check-circle text-xl';
             }
-            
             toast.classList.add('show');
             setTimeout(() => toast.classList.remove('show'), 3000);
         }
@@ -2412,7 +2548,7 @@
                 stickyBar.classList.remove('translate-y-full');
                 waBtn.style.bottom = "80px";
                 cartBtn.style.bottom = "160px";
-                body.style.paddingBottom = "60px"; // Prevent content from hiding behind bar
+                body.style.paddingBottom = "60px"; 
             } else {
                 stickyBar.classList.add('translate-y-full');
                 waBtn.style.bottom = "30px";
@@ -2438,11 +2574,35 @@
             overlay.classList.toggle('hidden');
         }
 
-        function sendWhatsAppOrder() {
+        // --- UPSELL CHECKOUT LOGIC ---
+        function attemptCheckout() {
             if(cart.length === 0) {
                 toggleCart();
                 return;
             }
+            
+            // Check if user has a drink
+            const hasDrink = cart.some(item => 
+                item.nameFr.toLowerCase().includes('soda') || 
+                item.nameFr.toLowerCase().includes('jus') || 
+                item.nameFr.toLowerCase().includes('eau')
+            );
+
+            if(!hasDrink) {
+                // Hide cart sidebar if open
+                const cartSidebar = document.getElementById('cart-sidebar');
+                if(!cartSidebar.classList.contains('translate-x-full') && !cartSidebar.classList.contains('-translate-x-full')) {
+                    toggleCart();
+                }
+                
+                showModal('upsell-modal');
+            } else {
+                processOrder();
+            }
+        }
+
+        function processOrder() {
+            if(cart.length === 0) return;
             
             const isAr = document.documentElement.getAttribute('lang') === 'ar';
             let text = isAr ? "مرحباً غاليريا! أريد طلب:\n\n" : "Bonjour Galleria! Je voudrais commander:\n\n";
@@ -2454,6 +2614,11 @@
                 total += item.price * item.qty;
             });
             
+            const notes = document.getElementById('order-notes') ? document.getElementById('order-notes').value.trim() : '';
+            if (notes) {
+                text += isAr ? `\n*ملاحظات إضافية:* ${notes}\n` : `\n*Instructions spéciales:* ${notes}\n`;
+            }
+
             text += isAr ? `\n*المجموع:* ${total} درهم` : `\n*Sous-total:* ${total} DH`;
             text += isAr ? `\n*التوصيل:* يحدد حسب المنطقة.` : `\n*Livraison:* À calculer selon la zone.`;
             text += isAr ? `\n\nالرجاء تأكيد طلبي. عنواني هو : ` : `\n\nMerci de confirmer ma commande. Mon adresse est : `;
@@ -2481,15 +2646,19 @@
         // --- Sticky Navbar & Scroll Effects ---
         const navbar = document.getElementById('navbar');
         const backToTopBtn = document.getElementById('back-to-top');
+        const promoBar = document.getElementById('promo-bar');
         
         window.addEventListener('scroll', () => {
             if (window.scrollY > 50) {
-                navbar.classList.add('nav-scrolled');
+                navbar.classList.add('nav-scrolled', 'top-0');
+                navbar.classList.remove('top-8');
+                if (promoBar) promoBar.classList.add('-translate-y-full');
             } else {
-                navbar.classList.remove('nav-scrolled');
+                navbar.classList.remove('nav-scrolled', 'top-0');
+                navbar.classList.add('top-8');
+                if (promoBar) promoBar.classList.remove('-translate-y-full');
             }
             
-            // Back to top visibility
             if (window.scrollY > 400) {
                 backToTopBtn.classList.add('show');
             } else {
@@ -2520,11 +2689,10 @@
 
         tabBtns.forEach(btn => {
             btn.addEventListener('click', () => {
-                // If search is active, don't do tab switching natively, just clear search first
                 const searchInput = document.getElementById('menu-search');
                 if(searchInput.value.length > 0) {
                     searchInput.value = '';
-                    filterMenu(); // resets view
+                    filterMenu(); 
                 }
 
                 tabBtns.forEach(b => {
